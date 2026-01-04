@@ -1,0 +1,25 @@
+[build]
+  command = "pnpm run build"
+  publish = "dist"
+  environment = { SECRETS_SCAN_OMIT_KEYS = "VITE_STRIPE_PUBLISHABLE_KEY" }
+
+[dev]
+  command = "pnpm run dev"
+  port = 8888
+  publish = "dist"
+  framework = "vite"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"

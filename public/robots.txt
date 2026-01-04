@@ -1,0 +1,10 @@
+# robots.txt for Serverless Shop Template
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://your-domain.com/sitemap.xml
+
+# Adjust this file based on your needs
+# For more info: https://developers.google.com/search/docs/crawling-indexing/robots/intro

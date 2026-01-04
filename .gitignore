@@ -1,0 +1,17 @@
+# Node Modules
+/node_modules
+
+# Distribution
+/dist
+
+# Local Netlify folder
+.netlify
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db

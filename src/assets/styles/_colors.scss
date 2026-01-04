@@ -1,0 +1,137 @@
+@use 'sass:color';
+
+// Fondos
+$color-bg-primary: #0a0a0a;
+$color-bg-secondary: #1a1a1a;
+$color-bg-tertiary: #2a2a2a;
+$color-bg-quaternary: #fafafa;
+
+// Textos
+$color-text-primary: #ffffff;
+$color-text-secondary: #b0b0b0;
+$color-text-tertiary: #808080;
+$color-text-quaternary: #121212;
+
+// Acentos (verde hacker)
+$color-accent-primary: #00ff00;
+$color-accent-secondary: #00cc00;
+
+// Bordes
+$color-border-primary: #333333;
+$color-border-secondary: #444444;
+
+// Estados
+$color-success: #00ff00;
+$color-error: #ff0000;
+$color-dark-error: #dd2121;
+$color-warning: #ffff00;
+
+// Sombras
+$shadow-light: rgba(255, 255, 255, 0.1);
+$shadow-dark: rgba(0, 0, 0, 0.3);
+
+// Variables CSS personalizadas para uso en componentes
+:root {
+  --bg-primary: #{$color-bg-primary};
+  --bg-secondary: #{$color-bg-secondary};
+  --bg-tertiary: #{$color-bg-tertiary};
+  --bg-quaternary: #{$color-bg-quaternary};
+
+  --text-primary: #{$color-text-primary};
+  --text-secondary: #{$color-text-secondary};
+  --text-tertiary: #{$color-text-tertiary};
+  --text-quaternary: #{$color-text-quaternary};
+
+  --accent-primary: #{$color-accent-primary};
+  --accent-secondary: #{$color-accent-secondary};
+
+  --border-primary: #{$color-border-primary};
+  --border-secondary: #{$color-border-secondary};
+
+  --success: #{$color-success};
+  --error: #{$color-error};
+  --warning: #{$color-warning};
+
+  --shadow-light: #{$shadow-light};
+  --shadow-dark: #{$shadow-dark};
+}
+
+// Mixins botones
+@mixin button-base {
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  background: none;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: $color-accent-primary;
+  color: $color-bg-primary;
+  border-color: $color-accent-primary;
+
+  &:hover {
+    color: var(--bg-primary);
+    background: $color-accent-secondary;
+    border-color: $color-accent-secondary;
+  }
+
+  &:disabled {
+    background: $color-bg-tertiary;
+    color: $color-text-tertiary;
+    border-color: $color-border-primary;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background: $color-bg-tertiary;
+  color: $color-text-primary;
+  border-color: $color-success;
+
+  &:hover:not(:disabled) {
+    background: $color-accent-primary;
+    color: $color-bg-primary;
+    border-color: $color-accent-primary;
+  }
+
+  &:disabled {
+    background: $color-bg-tertiary;
+    color: $color-text-tertiary;
+    border-color: $color-border-primary;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@mixin button-danger {
+  @include button-base;
+  background: $color-error;
+  color: $color-text-primary;
+  border-color: $color-error;
+
+  &:hover:not(:disabled) {
+    background: color.scale($color-error, $lightness: -10%);
+    border-color: color.scale($color-error, $lightness: -10%);
+  }
+}
+
+@mixin button-small {
+  @include button-base;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+@mixin button-large {
+  @include button-base;
+  padding: 1rem 1.5rem;
+  font-size: 1.125rem;
+}

@@ -1,0 +1,106 @@
+@use '_colors.scss' as *;
+@use '_fades.scss' as *;
+
+.hero {
+  padding: 3rem 2rem;
+  background: none;
+
+  .hero-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2.4rem;
+    align-items: center;
+    animation: fadeleft 0.6s;
+
+    .hero-slider {
+      position: relative;
+      width: 100%;
+      max-width: 60rem;
+      min-height: 21.875rem;
+      overflow: hidden;
+      background: $color-bg-primary;
+      margin-bottom: 1rem;
+    }
+
+    .hero-slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
+      text-align: center;
+      height: 100%;
+    }
+
+    .hero-image {
+      width: 32%;
+      .hero-img {
+        width: 100%;
+      }
+    }
+
+    .hero-text {
+      width: 68%;
+      .hero-title {
+        color: $color-text-primary;
+        margin-bottom: 1rem;
+      }
+
+      .hero-desc {
+        font-size: 1.1rem;
+        color: $color-text-tertiary;
+        margin-bottom: 2rem;
+      }
+
+      .hero-cta {
+        @include button-primary;
+        font-size: 1.1rem;
+        a {
+          display: block;
+          color: var(--text-quaternary);
+          text-decoration: none;
+          line-height: 1.8rem;
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 1024px) {
+  .hero {
+    .hero-container {
+      .hero-image {
+        width: 40%;
+      }
+      .hero-text {
+        width: 60%;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    .hero-container {
+      flex-direction: column;
+      .hero-image,
+      .hero-text {
+        width: 80%;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 2rem;
+    .hero-container {
+      .hero-image,
+      .hero-text {
+        width: 100%;
+      }
+    }
+  }
+}

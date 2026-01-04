@@ -1,0 +1,29 @@
+/*general*/
+@use '_reset.scss' as *;
+@use '_colors.scss' as *;
+@use '_typography.scss' as *;
+@use '_scaffolding.scss' as *;
+@use '_fades.scss' as *;
+/*components*/
+@use '_header.scss' as *;
+@use '_hero.scss' as *;
+@use '_slider.scss' as *;
+@use '_footer.scss' as *;
+@use '_shop.scss' as *;
+@use '_products.scss' as *;
+@use '_product.scss' as *;
+@use '_product-detail.scss' as *;
+@use '_product-variants.scss' as *;
+@use '_cart.scss' as *;
+@use '_confir-modal.scss' as *;
+@use '_filters.scss' as *;
+@use '_sort.scss' as *;
+@use '_pagination.scss' as *;
+/*pages*/
+@use '_contact.scss' as *;
+@use '_about_sfaq.scss' as *;
+@use '_home.scss' as *;
+@use '_shop.scss' as *;
+@use '_error-pages.scss' as *;
+/*stripe components*/
+@use '_stripe.scss' as *;
