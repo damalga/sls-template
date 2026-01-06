@@ -1,12 +1,33 @@
-import { neon } from '@netlify/neon';
+import { promises as fs } from 'fs';
+import { join } from 'path';
+// import { neon } from '@netlify/neon';
 
 export async function handler() {
   try {
     console.log('getProducts: Starting function');
-    const sql = neon();
 
+    // OPTION 1: Load from JSON file (default)
+    // To use database instead, uncomment the database code below and comment out this section
+    const jsonPath = join(process.cwd(), 'database', 'sample-products.json');
+    console.log('getProducts: Reading from JSON file:', jsonPath);
+    const jsonData = await fs.readFile(jsonPath, 'utf-8');
+    const rows = JSON.parse(jsonData);
+    console.log(`getProducts: Loaded ${rows.length} products from JSON`);
+
+    // Add IDs if not present (for JSON compatibility)
+    const rowsWithIds = rows.map((product, index) => ({
+      ...product,
+      id: product.id || index + 1,
+      description: product.description || product.desc,
+      created_at: product.created_at || new Date().toISOString()
+    }));
+
+    /*
+    // OPTION 2: Load from Neon Database
+    // Uncomment this section to use PostgreSQL database instead of JSON
+    const sql = neon();
     console.log('getProducts: Executing SQL query');
-    const rows = await sql`
+    const rowsWithIds = await sql`
       SELECT
         id,
         sku,
@@ -27,12 +48,13 @@ export async function handler() {
       WHERE active = true
       ORDER BY created_at DESC
     `;
+    console.log(`getProducts: Found ${rowsWithIds.length} products from database`);
+    */
 
-    console.log(`getProducts: Found ${rows.length} products`);
-    console.log('getProducts: Sample product:', rows[0]);
+    console.log('getProducts: Sample product:', rowsWithIds[0]);
 
     // Transform data to match frontend schema
-    const products = rows.map((product, index) => {
+    const products = rowsWithIds.map((product, index) => {
       try {
         // Parse variants if needed
         let variants = product.variants ? (typeof product.variants === 'string' ? JSON.parse(product.variants) : product.variants) : null;

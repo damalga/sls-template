@@ -8,7 +8,7 @@ export const useCartStore = defineStore("cart", () => {
   // Load cart data from localStorage on initialization
   const loadCartFromStorage = () => {
     try {
-      const savedCart = localStorage.getItem('hackeed_cart');
+      const savedCart = localStorage.getItem('sls_shop_cart');
       return savedCart ? JSON.parse(savedCart) : [];
     } catch (error) {
       console.warn('Error loading cart from localStorage:', error);
@@ -19,7 +19,7 @@ export const useCartStore = defineStore("cart", () => {
   // Persist cart data to localStorage
   const saveCartToStorage = (cartItems) => {
     try {
-      localStorage.setItem('hackeed_cart', JSON.stringify(cartItems));
+      localStorage.setItem('sls_shop_cart', JSON.stringify(cartItems));
     } catch (error) {
       console.warn('Error saving cart to localStorage:', error);
     }
@@ -89,7 +89,7 @@ export const useCartStore = defineStore("cart", () => {
 
     // Verify product availability before adding
     if (!variantsStore.isProductAvailable(product)) {
-      error.value = 'Este producto no está disponible';
+      error.value = 'This product is out of stock';
       setTimeout(() => {
         error.value = null;
       }, 3000);
@@ -109,7 +109,7 @@ export const useCartStore = defineStore("cart", () => {
 
       // Validate against numeric stock if available
       if (variantStock !== null && existingItem.quantity >= variantStock) {
-        error.value = `Stock máximo alcanzado (${variantStock} unidades disponibles)`;
+        error.value = `Maximum stock reached (${variantStock} units in stocks)`;
         setTimeout(() => {
           error.value = null;
         }, 3000);
@@ -118,7 +118,7 @@ export const useCartStore = defineStore("cart", () => {
 
       // Validate against max quantity limit
       if (existingItem.quantity >= QUANTITY_LIMITS.MAX) {
-        error.value = `Máximo ${QUANTITY_LIMITS.MAX} unidades por producto`;
+        error.value = `Maximum ${QUANTITY_LIMITS.MAX} units per product`;
         setTimeout(() => {
           error.value = null;
         }, 3000);
@@ -175,7 +175,7 @@ export const useCartStore = defineStore("cart", () => {
         // Show warning if limit exceeded
         if (quantity > QUANTITY_LIMITS.MAX) {
           console.warn('Quantity exceeds maximum limit of', QUANTITY_LIMITS.MAX, 'units per product');
-          error.value = `Máximo ${QUANTITY_LIMITS.MAX} unidades por producto`;
+          error.value = `Maximum ${QUANTITY_LIMITS.MAX} units per product`;
 
           // Clear error after 3 seconds
           setTimeout(() => {
@@ -227,20 +227,20 @@ export const useCartStore = defineStore("cart", () => {
   const initStripe = async () => {
     try {
       if (!stripePromise) {
-        throw new Error('Stripe no está configurado correctamente. Revisa la configuración de VITE_STRIPE_PUBLISHABLE_KEY');
+        throw new Error('Stripe is not configured correctly. Check VITE_STRIPE_PUBLISHABLE_KEY configuration');
       }
 
       console.log('Initializing Stripe');
       stripe.value = await stripePromise;
 
       if (!stripe.value) {
-        throw new Error('No se pudo cargar Stripe');
+        throw new Error('Could not load Stripe');
       }
 
       console.log('Stripe initialized successfully');
       return stripe.value;
     } catch (err) {
-      handleError(err, 'Inicialización de Stripe');
+      handleError(err, 'Stripe Initialization');
       error.value = getUserFriendlyMessage(err);
       return null;
     }
@@ -258,12 +258,12 @@ export const useCartStore = defineStore("cart", () => {
 
       // Verify cart is not empty
       if (!items.value || items.value.length === 0) {
-        throw new Error('El carrito está vacío');
+        throw new Error('The cart is empty');
       }
 
       // Verify Stripe configuration
       if (!publishableKey) {
-        throw new Error('Stripe no está configurado. Revisa las variables de entorno.');
+        throw new Error('Stripe is not configured. Check environment variables.');
       }
 
       const response = await fetch('/.netlify/functions/stripe_checkout', {
@@ -282,16 +282,16 @@ export const useCartStore = defineStore("cart", () => {
       console.log('Response data:', session);
 
       if (!response.ok) {
-        throw new Error(session.error || session.message || 'Error al crear la sesión de pago');
+        throw new Error(session.error || session.message || 'Error creating payment session');
       }
 
       if (!session.id) {
-        throw new Error('Respuesta inválida del servidor: falta session.id');
+        throw new Error('Invalid server response: missing session.id');
       }
 
       return session;
     } catch (err) {
-      handleError(err, 'Creación de sesión de checkout');
+      handleError(err, 'Checkout session creation');
       error.value = getUserFriendlyMessage(err);
       throw err;
     } finally {
@@ -306,12 +306,12 @@ export const useCartStore = defineStore("cart", () => {
 
       // Verify configuration before proceeding
       if (!publishableKey) {
-        throw new Error('Stripe no está configurado. Revisa las variables de entorno VITE_STRIPE_PUBLISHABLE_KEY.');
+        throw new Error('Stripe is not configured. Check environment variables VITE_STRIPE_PUBLISHABLE_KEY.');
       }
 
       const stripeInstance = await initStripe();
       if (!stripeInstance) {
-        throw new Error('No se pudo inicializar Stripe. Verifica tu clave pública.');
+        throw new Error('Could not initialize Stripe. Check your public key.');
       }
 
       const session = await createCheckoutSession(customerInfo);
@@ -331,7 +331,7 @@ export const useCartStore = defineStore("cart", () => {
         }
       }
     } catch (err) {
-      handleError(err, 'Redirección a checkout');
+      handleError(err, 'Redirect to checkout');
       error.value = getUserFriendlyMessage(err);
       throw err;
     }
@@ -344,12 +344,12 @@ export const useCartStore = defineStore("cart", () => {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Error al verificar el pago');
+        throw new Error(result.error || 'Error verifying payment');
       }
 
       return result;
     } catch (err) {
-      handleError(err, 'Verificación de pago');
+      handleError(err, 'Payment verification');
       error.value = getUserFriendlyMessage(err);
       throw err;
     }

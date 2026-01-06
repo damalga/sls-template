@@ -49,7 +49,7 @@
 
         <!-- Order Items -->
         <div v-if="orderDetails.items && orderDetails.items.length > 0" class="order-items">
-          <h4>Productos</h4>
+          <h4>Products</h4>
           <div class="items-list">
             <div v-for="item in orderDetails.items" :key="item.id" class="order-item">
               <div class="item-info">
@@ -57,7 +57,7 @@
                 <p class="item-sku">SKU: {{ item.product_sku }}</p>
               </div>
               <div class="item-quantity">
-                {{ item.quantity }} {{ item.quantity === 1 ? 'unidad' : 'unidades' }}
+                {{ item.quantity }} {{ item.quantity === 1 ? 'unit' : 'units' }}
               </div>
               <div class="item-price">
                 {{ formatPrice(item.total_price, orderDetails.currency) }}
@@ -99,11 +99,11 @@
       <div class="actions">
         <router-link to="/shop" class="test-btn">
           <i class="fas fa-shopping-bag"></i>
-          Continuar Comprando
+          Continue Shopping
         </router-link>
         <button @click="downloadInvoice" class="test-btn secondary" v-if="canDownloadInvoice">
           <i class="fas fa-download"></i>
-          Descargar Factura
+          Download Invoice
         </button>
       </div>
     </div>
@@ -115,25 +115,25 @@
           <i class="fas fa-exclamation-triangle"></i>
         </div>
 
-        <h1 class="error-title">Problema con el Pago</h1>
+        <h1 class="error-title">Payment Problem</h1>
         <p class="error-subtitle">
-          {{ errorMessage || 'No pudimos verificar tu pago. Por favor contacta con nosotros.' }}
+          {{ errorMessage || 'We could not verify your payment. Please contact us.' }}
         </p>
 
         <div class="actions">
           <router-link to="/cart" class="test-btn">
             <i class="fas fa-redo"></i>
-            Intentar Nuevamente
+            Try Again
           </router-link>
-          <a href="mailto:soporte@hackeed.com" class="test-btn secondary">
+          <a href="mailto:contact@your-domain.com" class="test-btn secondary">
             <i class="fas fa-envelope"></i>
-            Contactar Soporte
+            Contact Support
           </a>
         </div>
 
         <!-- Session Details for Debugging -->
         <div v-if="sessionId && $route.query.debug" class="stripe-section">
-          <h4>Información de Debug</h4>
+          <h4>Debug Information</h4>
           <p><strong>Session ID:</strong> {{ sessionId }}</p>
           <p><strong>Error:</strong> {{ error }}</p>
         </div>
@@ -177,7 +177,7 @@ export default {
         sessionId.value = route.query.session_id
 
         if (!sessionId.value) {
-          throw new Error('No se proporcionó ID de sesión. Verifica que el enlace sea correcto o intenta nuevamente desde el carrito.')
+          throw new Error('No session ID provided. Verifica que el enlace sea correcto o intenta nuevamente desde el cart.')
         }
 
         const result = await verifyPayment(sessionId.value)
@@ -199,7 +199,7 @@ export default {
           )
         } else {
           paymentVerified.value = false
-          errorMessage.value = 'No pudimos verificar tu pago. Si realizaste el pago correctamente, por favor contacta con soporte para que podamos ayudarte.'
+          errorMessage.value = 'We could not verify your payment. If you completed the payment correctly, please contact support para que podamos ayudarte.'
         }
       } catch (err) {
         console.error('PaymentSuccess: Error verifying payment:', err)

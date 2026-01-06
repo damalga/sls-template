@@ -4,17 +4,17 @@
 
     <main class="cart-page">
       <div class="cart-container">
-        <h1 class="cart-title">Tu Carrito</h1>
+        <h1 class="cart-title">Your Cart</h1>
 
-        <!-- Carrito vacío -->
+        <!-- Empty cart -->
         <div v-if="cartStore.totalItems === 0" class="empty-cart">
           <div class="empty-cart-icon">🛒</div>
-          <h2>Tu carrito está vacío</h2>
-          <p>Añade algún producto y vuelve aquí</p>
-          <router-link to="/shop" class="continue-shopping-btn"> Ir a la tienda </router-link>
+          <h2>Your cart is empty</h2>
+          <p>Add some products and come back here</p>
+          <router-link to="/shop" class="continue-shopping-btn">Go to Shop</router-link>
         </div>
 
-        <!-- Carrito con productos -->
+        <!-- Cart with products -->
         <div v-else class="cart-content">
           <div class="cart-items">
             <div v-for="item in cartStore.cartItems" :key="item.cartItemId" class="cart-item">
@@ -33,7 +33,7 @@
                   <button
                     class="quantity-btn minus"
                     @click="cartStore.updateQuantity(item.cartItemId, item.quantity - 1)"
-                    aria-label="Disminuir cantidad de {{ item.name }}"
+                    :aria-label="`Decrease quantity of ${item.name}`"
                     :aria-describedby="`quantity-${item.cartItemId}`"
                   >
                     −
@@ -43,52 +43,52 @@
                     :id="`quantity-${item.cartItemId}`"
                     role="status"
                     aria-live="polite"
-                    :aria-label="`Cantidad: ${item.quantity}`"
+                    :aria-label="`Quantity: ${item.quantity}`"
                   >
                     {{ item.quantity }}
                   </span>
                   <button
                     class="quantity-btn plus"
                     @click="cartStore.updateQuantity(item.cartItemId, item.quantity + 1)"
-                    aria-label="Aumentar cantidad de {{ item.name }}"
+                    :aria-label="`Increase quantity of ${item.name}`"
                     :aria-describedby="`quantity-${item.cartItemId}`"
                     :disabled="isMaxQuantity(item.quantity)"
                   >
                     +
                   </button>
                 </div>
-                <div class="item-total" aria-label="Subtotal del producto">
+                <div class="item-total" aria-label="Product subtotal">
                   €{{ (item.price * item.quantity).toFixed(2) }}
                 </div>
                 <button
                   class="remove-item"
                   @click="confirmRemoveItem(item)"
-                  :aria-label="`Eliminar ${item.name} del carrito`"
+                  :aria-label="`Remove ${item.name} from cart`"
                 >
-                  Eliminar producto
+                  Remove product
                 </button>
               </div>
             </div>
 
             <!-- Clear cart button -->
             <div v-if="cartStore.totalItems > 0" class="cart-actions">
-              <button class="clear-cart-btn" @click="confirmClearCart">Vaciar carrito</button>
+              <button class="clear-cart-btn" @click="confirmClearCart">Clear cart</button>
             </div>
           </div>
 
           <!-- Cart summary -->
           <div class="cart-summary">
             <div class="summary-card">
-              <h3>Resumen del pedido</h3>
+              <h3>Order Summary</h3>
 
               <div class="summary-row">
-                <span>Productos ({{ cartStore.totalItems }})</span>
+                <span>Products ({{ cartStore.totalItems }})</span>
                 <span>€{{ cartStore.totalPrice.toFixed(2) }}</span>
               </div>
 
               <div class="summary-row">
-                <span>Envío</span>
-                <span>Gratis</span>
+                <span>Shipping</span>
+                <span>Free</span>
               </div>
 
               <hr />
@@ -103,11 +103,11 @@
                 @click="handleCheckout"
                 :disabled="cartStore.loading || cartStore.totalItems === 0"
               >
-                <span v-if="cartStore.loading">Procesando...</span>
-                <span v-else>Proceder al pago</span>
+                <span v-if="cartStore.loading">Processing...</span>
+                <span v-else>Proceed to Checkout</span>
               </button>
 
-              <router-link to="/shop" class="continue-shopping"> Continuar comprando </router-link>
+              <router-link to="/shop" class="continue-shopping">Continue Shopping</router-link>
 
               <!-- Stripe error message -->
               <div v-if="cartStore.error" class="checkout-error">⚠️ {{ cartStore.error }}</div>
@@ -122,10 +122,10 @@
     <!-- Clear cart confirmation modal -->
     <ConfirmModal
       :show="showConfirmModal"
-      title="Vaciar carrito"
-      message="¿Estás seguro de que quieres eliminar todos los productos del carrito? Esta acción no se puede deshacer."
-      confirm-text="Sí, vaciar carrito"
-      cancel-text="Cancelar"
+      title="Clear cart"
+      message="Are you sure you want to remove all products from the cart? This action cannot be undone."
+      confirm-text="Yes, clear cart"
+      cancel-text="Cancel"
       @confirm="handleConfirmClear"
       @cancel="handleCancelClear"
     />
@@ -133,10 +133,10 @@
     <!-- Remove item confirmation modal -->
     <ConfirmModal
       :show="showRemoveItemModal"
-      title="Eliminar producto"
-      :message="`¿Estás seguro de que quieres eliminar '${itemToRemove?.name}' del carrito?`"
-      confirm-text="Sí, eliminar"
-      cancel-text="Cancelar"
+      title="Remove product"
+      :message="`Are you sure you want to remove '${itemToRemove?.name}' from the cart?`"
+      confirm-text="Yes, remove"
+      cancel-text="Cancel"
       @confirm="handleConfirmRemoveItem"
       @cancel="handleCancelRemoveItem"
     />
@@ -154,10 +154,10 @@ import { ref, computed } from 'vue'
 
 // SEO Meta Tags - Do not index cart
 usePageMeta({
-  title: 'Carrito de Compras | Hackeed',
-  description: 'Revisa tu carrito de compras en Hackeed',
+  title: 'Shopping Cart | SLS Shop',
+  description: 'Review your shopping cart',
   robots: 'noindex, nofollow', // Cart should not be indexed
-  url: 'https://hackeed.com/cart',
+  url: 'https://your-domain.com/cart',
 })
 
 const cartStore = useCartStore()
@@ -217,7 +217,7 @@ const handleCheckout = async () => {
     // Temporary customer info (in production this would come from a form)
     const customerInfo = {
       email: 'test@example.com', // TODO: Replace with checkout form
-      name: 'Cliente de Prueba',
+      name: 'Test Customer',
     }
 
     // Redirect to Stripe Checkout

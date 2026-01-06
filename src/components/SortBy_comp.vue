@@ -1,6 +1,6 @@
 <template>
   <div class="sort-by">
-    <span class="sort-label">Ordenar por:</span>
+    <span class="sort-label">Sort by:</span>
     <div class="custom-select" @click="toggleOpen">
       <div class="selected">{{ labelFor(selectedSort) }}</div>
       <ul v-if="isOpen" class="options">
@@ -25,10 +25,10 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue', 'sort-change'])
 
 const options = [
-  { value: 'newest', label: 'Novedades primero' },
-  { value: 'oldest', label: 'Más antiguos primero' },
-  { value: 'price-asc', label: 'Precio: menor a mayor' },
-  { value: 'price-desc', label: 'Precio: mayor a menor' },
+  { value: 'newest', label: 'Newest first' },
+  { value: 'oldest', label: 'Oldest first' },
+  { value: 'price-asc', label: 'Price: low to high' },
+  { value: 'price-desc', label: 'Price: high to low' },
 ]
 
 const selectedSort = ref(props.modelValue)

@@ -15,26 +15,26 @@ import { useHead } from '@vueuse/head'
  *
  * @example
  * usePageMeta({
- *   title: 'Mi Página - Hackeed',
+ *   title: 'Mi Página - SLS Shop',
  *   description: 'Descripción de mi página',
  *   keywords: 'keyword1, keyword2, keyword3',
- *   url: 'https://hackeed.com/mi-pagina'
+ *   url: 'https://your-domain.com/mi-pagina'
  * })
  */
 export function usePageMeta(meta = {}) {
-  const baseUrl = import.meta.env.VITE_BASE_URL || 'https://hackeed.com'
-  const siteName = import.meta.env.VITE_SITE_NAME || 'Hackeed'
+  const baseUrl = import.meta.env.VITE_BASE_URL || 'https://your-domain.com'
+  const siteName = import.meta.env.VITE_SITE_NAME || 'SLS Shop'
 
   // Meta tags por defecto
   const defaultMeta = {
-    title: `${siteName} - Tienda de Hardware Hacking en España | Flipper Zero, Raspberry Pi`,
+    title: `${siteName} - Shop de Tech Products en ES | Flipper Zero, Raspberry Pi`,
     description:
-      'Tienda online especializada en hardware hacking y tecnología. Compra Flipper Zero, Raspberry Pi, Hak5, RTL-SDR y herramientas de pentesting. Envíos rápidos en 24-48h desde España.',
+      'Shop online especializada en tech products y tecnología. Compra Flipper Zero, Raspberry Pi, Hak5, RTL-SDR y herramientas de pentesting. Envíos rápidos en 24-48h desde ES.',
     image: `${baseUrl}/images/og-default.jpg`,
     url: baseUrl,
     type: 'website',
     keywords:
-      'tienda hacking, flipper zero españa, raspberry pi, hak5, hardware pentesting, herramientas ciberseguridad, gadgets tecnología',
+      'shop hacking, flipper zero es, raspberry pi, hak5, hardware pentesting, herramientas ciberseguridad, gadgets tecnología',
     robots: 'index, follow',
   }
 
@@ -70,7 +70,7 @@ export function usePageMeta(meta = {}) {
       { name: 'twitter:title', content: fullTitle },
       { name: 'twitter:description', content: finalMeta.description },
       { name: 'twitter:image', content: finalMeta.image },
-      // { name: 'twitter:site', content: '@hackeed_es' }, // Descomentar cuando tengas Twitter
+      // { name: 'twitter:site', content: '@sls-shop_es' }, // Descomentar cuando tengas Twitter
 
       // Additional meta tags
       { name: 'theme-color', content: '#000000' },

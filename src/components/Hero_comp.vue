@@ -1,24 +1,13 @@
 <template>
   <section class="hero">
     <div class="hero-container">
-      <!-- Image section -->
-      <div class="hero-image">
-        <img src="../../public/images/hero/1200x1200-standard.png" alt="Hero Image" class="hero-img" />
-      </div>
-
-      <!-- Text section -->
-      <div class="hero-text">
-        <h1 class="hero-title">Bienvenido a Hackeed</h1>
-        <p class="hero-desc">
-          Te ofrecemos un catálogo de herramientas tecnológicas para abrir el mundo...
-          <br></br>
-          <br></br>
-          O para construirlo a tu gusto.
-        </p>
-        <button class="hero-cta">
-          <router-link to="/shop"> Explorar Productos </router-link>
-        </button>
+      <div class="hero-content">
+        <h1 class="hero-title">Welcome to SLS Shop</h1>
+        <p class="hero-subtitle">Your modern serverless e-commerce store</p>
+        <router-link to="/shop" class="hero-cta">Browse Products</router-link>
       </div>
     </div>
   </section>
 </template>
+
+<script setup></script>

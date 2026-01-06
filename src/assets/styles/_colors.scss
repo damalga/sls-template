@@ -1,34 +1,34 @@
 @use 'sass:color';
 
-// Fondos
-$color-bg-primary: #0a0a0a;
-$color-bg-secondary: #1a1a1a;
-$color-bg-tertiary: #2a2a2a;
+// Backgrounds
+$color-bg-primary: #ffffff;
+$color-bg-secondary: #f5f5f5;
+$color-bg-tertiary: #eeeeee;
 $color-bg-quaternary: #fafafa;
 
-// Textos
-$color-text-primary: #ffffff;
-$color-text-secondary: #b0b0b0;
-$color-text-tertiary: #808080;
-$color-text-quaternary: #121212;
+// Text
+$color-text-primary: #000000;
+$color-text-secondary: #333333;
+$color-text-tertiary: #666666;
+$color-text-quaternary: #999999;
 
-// Acentos (verde hacker)
-$color-accent-primary: #00ff00;
-$color-accent-secondary: #00cc00;
+// Accents
+$color-accent-primary: #000000;
+$color-accent-secondary: #333333;
 
-// Bordes
-$color-border-primary: #333333;
-$color-border-secondary: #444444;
+// Borders
+$color-border-primary: #cccccc;
+$color-border-secondary: #dddddd;
 
-// Estados
-$color-success: #00ff00;
-$color-error: #ff0000;
-$color-dark-error: #dd2121;
-$color-warning: #ffff00;
+// States
+$color-success: #000000;
+$color-error: #000000;
+$color-dark-error: #333333;
+$color-warning: #000000;
 
-// Sombras
-$shadow-light: rgba(255, 255, 255, 0.1);
-$shadow-dark: rgba(0, 0, 0, 0.3);
+// Shadows
+$shadow-light: rgba(0, 0, 0, 0.05);
+$shadow-dark: rgba(0, 0, 0, 0.1);
 
 // Variables CSS personalizadas para uso en componentes
 :root {

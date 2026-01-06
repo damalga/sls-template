@@ -32,9 +32,9 @@
             </span>
           </div>
           <!-- Stock info -->
-          <div v-if="!option.inStock" class="out-of-stock-badge">Agotado</div>
+          <div v-if="!option.inStock" class="out-of-stock-badge">Out of stock</div>
           <div v-else-if="option.stock !== undefined && option.stock <= 5" class="low-stock-badge">
-            Solo {{ option.stock }} {{ option.stock === 1 ? 'unidad' : 'unidades' }}
+            Only {{ option.stock }} {{ option.stock === 1 ? 'unit' : 'units' }}
           </div>
         </label>
       </div>
@@ -42,7 +42,7 @@
 
     <!-- Mostrar características de la opción seleccionada -->
     <div v-if="selectedOptionData && selectedOptionData.features" class="variant-features">
-      <h5 class="features-title">Incluye:</h5>
+      <h5 class="features-title">Includes:</h5>
       <ul class="features-list">
         <li v-for="feature in selectedOptionData.features" :key="feature">
           {{ feature }}

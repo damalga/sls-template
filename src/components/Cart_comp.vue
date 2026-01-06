@@ -3,7 +3,7 @@
     <div class="cart-container">
       <h2 class="cart-title">
         <i class="fas fa-shopping-cart"></i>
-        Carrito de Compras
+        Shopping Cart
         <span v-if="getCartItemCount() > 0" class="item-count">
           ({{ getCartItemCount() }} {{ getCartItemCount() === 1 ? 'item' : 'items' }})
         </span>
@@ -15,7 +15,7 @@
         :disabled="loading"
       >
         <i class="fas fa-trash"></i>
-        Vaciar Carrito
+        Clear Cart
       </button>
     </div>
 
@@ -23,11 +23,11 @@
       <!-- Empty Cart -->
       <div v-if="cart.items.length === 0" class="empty-cart">
         <i class="fas fa-shopping-cart empty-icon"></i>
-        <h3>Tu carrito está vacío</h3>
-        <p>Agrega algunos productos para empezar a comprar</p>
+        <h3>Your cart is empty</h3>
+        <p>Add some products to start shopping</p>
         <router-link to="/shop" class="continue-shopping-btn">
           <i class="fas fa-arrow-left"></i>
-          Continuar Comprando
+          Continue Shopping
         </router-link>
       </div>
 
@@ -88,7 +88,7 @@
       <!-- Cart Summary -->
       <div v-if="cart.items.length > 0" class="cart-summary">
         <div class="summary-card">
-          <h3>Resumen del Pedido</h3>
+          <h3>Order Summary</h3>
           <div class="summary-row total">
             <span>Total:</span>
             <span>{{ formatPrice(cart.total) }}</span>
@@ -96,7 +96,7 @@
 
           <router-link to="/shop" class="continue-shopping">
             <i class="fas fa-arrow-left"></i>
-            Continuar Comprando
+            Continue Shopping
           </router-link>
         </div>
       </div>

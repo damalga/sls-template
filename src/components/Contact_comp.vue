@@ -1,11 +1,20 @@
 <template>
-  <section id="contact" class="contact-section">
-    <h4 class="contact-title">¿Tienes dudas o ideas?</h4>
-    <p class="contact-desc">Escríbenos y colabora con el proyecto.</p>
-    <p class="contact-desc">
-      Por ahora no queremos formularios. Cualquier input es un vector de ataque, así que mientras
-      nos convertimos en los mejores "web security developers", simplemente envíanos un email a
-      <a href="mailto:hackeed.es@proton.me">hackeed.es@proton.me</a>
+  <div class="contact-form">
+    <h2>Get in Touch</h2>
+    <p>
+      Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as
+      possible.
     </p>
-  </section>
+    <div class="contact-info">
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:contact@your-domain.com">contact@your-domain.com</a>
+      </p>
+      <p class="contact-note">
+        <em>Note: Replace with your actual contact email or integrate a contact form service like Formspree, Netlify Forms, or SendGrid.</em>
+      </p>
+    </div>
+  </div>
 </template>
+
+<script setup></script>

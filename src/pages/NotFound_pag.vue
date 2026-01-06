@@ -5,27 +5,27 @@
     <main class="error-container">
       <div class="error-content">
         <h1 class="error-code">404</h1>
-        <h2 class="error-title">Página no encontrada</h2>
+        <h2 class="error-title">Page not found</h2>
         <p class="error-description">
-          Lo sentimos, la página que buscas no existe o ha sido movida.
+          Sorry, the page you are looking for does not exist or has been moved.
         </p>
 
         <div class="error-actions">
           <router-link to="/" class="error-btn error-btn--primary">
-            Ir al inicio
+            Go to home
           </router-link>
           <router-link to="/shop" class="error-btn error-btn--secondary">
-            Ver productos
+            View products
           </router-link>
         </div>
 
-        <!-- Información de contacto -->
+        <!-- Contact information -->
         <div class="error-help">
           <p class="error-help-text">
-            Si el problema persiste, puedes contactarnos:
+            If the problem persists, you can contact us:
           </p>
-          <a href="mailto:hackeed.es@proton.me" class="error-contact-link">
-            hackeed.es@proton.me
+          <a href="mailto:contact@your-domain.com" class="error-contact-link">
+            contact@your-domain.com
           </a>
         </div>
       </div>

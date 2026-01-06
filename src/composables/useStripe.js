@@ -4,7 +4,7 @@
  * Este composable es solo un alias del cartStore para mantener
  * compatibilidad con componentes existentes que usaban useStripe.
  *
- * La lógica real del carrito y Stripe ahora vive en:
+ * La lógica real del cart y Stripe ahora vive en:
  * @see src/stores/cartStore.js
  *
  * NOTA: En nuevos componentes, usa directamente useCartStore en lugar de este wrapper.
@@ -18,7 +18,7 @@ export function useStripe() {
   // Devolvemos todos los métodos y propiedades del cartStore
   // manteniendo la misma API que tenía useStripe antes
   return {
-    // Estado del carrito
+    // Estado del cart
     cart: {
       items: cartStore.items,
       total: cartStore.totalPrice,
@@ -29,7 +29,7 @@ export function useStripe() {
     loading: cartStore.loading,
     error: cartStore.error,
 
-    // Métodos del carrito (pasamos directamente desde el store)
+    // Métodos del cart (pasamos directamente desde el store)
     addToCart: cartStore.addToCart,
     removeFromCart: cartStore.removeFromCart,
     updateCartQuantity: cartStore.updateQuantity,

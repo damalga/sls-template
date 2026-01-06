@@ -5,7 +5,7 @@
       <Hero />
       <Slider />
       <Products
-        title="Productos destacados"
+        title="Featured Products"
         :limit="3"
         :show-title="true"
         :products-list="products"
@@ -31,13 +31,13 @@ import Footer from '../components/Footer_comp.vue'
 
 // SEO Meta Tags
 usePageMeta({
-  title: 'a c k e e d | Home',
+  title: 'SLS Shop | Home',
   description:
-    'Tienda online especializada en hackware (hardware hacking, pentesting, mundo maker y tecnología avanzada). Envíos en 24-48h desde Madrid (España).',
+    'Online shop specialized in tech products, pentesting, and advanced technology. Fast shipping.',
   keywords:
-    'tienda hacking españa, flipper zero, raspberry pi tienda, hak5, hardware pentesting, herramientas ciberseguridad, gadgets tecnología',
-  url: 'https://hackeed.com',
-  image: 'https://hackeed.com/images/og-home.jpg',
+    'tech shop, electronics, gadgets, online store, e-commerce',
+  url: 'https://your-domain.com',
+  image: 'https://your-domain.com/images/og-home.jpg',
 })
 
 // Structured Data - Organization & WebSite
@@ -46,24 +46,24 @@ useSchema([
   {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Hackeed',
-    url: 'https://hackeed.com',
-    logo: 'https://hackeed.com/logo.png',
+    name: 'SLS Shop',
+    url: 'https://your-domain.com',
+    logo: 'https://your-domain.com/logo.png',
     description:
-      'Tienda especializada en hardware hacking, pentesting y tecnología avanzada en España',
+      'Shop specialized in tech products and advanced technology',
     foundingDate: '2024',
-    email: 'hackeed.es@proton.me',
+    email: 'contact@your-domain.com',
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'hackeed.es@proton.me',
+      email: 'contact@your-domain.com',
       contactType: 'Customer Service',
-      availableLanguage: ['Spanish', 'English'],
+      availableLanguage: ['English', 'English'],
     },
     sameAs: [
-      'https://github.com/damalga/hackeed',
-      // Añadir redes sociales cuando estén disponibles
-      // 'https://twitter.com/hackeed_es',
-      // 'https://linkedin.com/company/hackeed'
+      'https://github.com/damalga/sls-shop',
+      // Add social networks when available
+      // 'https://twitter.com/sls-shop_es',
+      // 'https://linkedin.com/company/sls-shop'
     ],
     address: {
       '@type': 'PostalAddress',
@@ -75,26 +75,26 @@ useSchema([
   {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Hackeed',
-    url: 'https://hackeed.com',
+    name: 'SLS Shop',
+    url: 'https://your-domain.com',
     description:
-      'Tienda online de hardware hacking: Flipper Zero, Raspberry Pi, Hak5 y herramientas de pentesting',
+      'Online shop for tech products and electronics',
     publisher: {
       '@type': 'Organization',
-      name: 'Hackeed',
+      name: 'SLS Shop',
     },
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://hackeed.com/shop?q={search_term_string}',
+        urlTemplate: 'https://your-domain.com/shop?q={search_term_string}',
       },
       'query-input': 'required name=search_term_string',
     },
   },
 ])
 
-// Cargar productos desde Neon DB
+// Load products
 const { products, loadProducts } = useProducts()
 
 onMounted(loadProducts)

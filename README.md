@@ -6,7 +6,8 @@ A modern, fully-functional serverless e-commerce template built with **Vue 3**, 
 
 - **Serverless Architecture**: No server management, scales automatically
 - **Complete Shopping Cart**: Add/remove items, variant support, localStorage persistence
-- **Stripe Integration**: Secure checkout with Stripe
+- **Optional Stripe Integration**: Secure checkout with Stripe (can be disabled)
+- **Optional Database**: Use Neon PostgreSQL or JSON file for products
 - **Product Variants**: Support for product options (colors, sizes, etc.)
 - **Stock Management**: Real-time stock tracking per product/variant
 - **Responsive Design**: Works on all devices
@@ -51,8 +52,9 @@ sls-template/
 │   ├── stripe_webhook.js    # Handle Stripe events
 │   └── debugProducts.js     # Debug helper
 ├── database/            # Database schema and samples
-│   ├── schema.sql           # Database structure
-│   └── sample-products.sql  # Example products
+│   ├── schema.sql           # PostgreSQL database structure
+│   ├── sample-products.sql  # Example products (SQL)
+│   └── sample-products.json # Example products (JSON)
 ├── public/              # Static assets
 ├── .env.example         # Environment variables template
 ├── netlify.toml         # Netlify configuration
@@ -65,9 +67,9 @@ sls-template/
 ### Prerequisites
 
 - Node.js 18+ and pnpm
-- Netlify account
-- Neon database account
-- Stripe account
+- Netlify account (optional, for deployment)
+- Neon database account (optional, can use JSON file)
+- Stripe account (optional, for payment processing)
 
 ### 1. Clone and Install
 
@@ -101,7 +103,17 @@ STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxxxxxxxx
 VITE_APP_URL=http://localhost:8888
 ```
 
-### 3. Set Up Database
+### 3. Set Up Database (Optional)
+
+**Option A: Use JSON File (No Database Required)**
+
+The template includes `database/sample-products.json` with 4 sample products. To use JSON instead of a database:
+
+1. Modify `netlify/functions/getProducts.js` to read from the JSON file
+2. Update product images in `/public/images/`
+3. Edit `sample-products.json` with your products
+
+**Option B: Use Neon PostgreSQL**
 
 Create your database on [Neon](https://console.neon.tech/) and run the schema:
 
@@ -110,6 +122,8 @@ Create your database on [Neon](https://console.neon.tech/) and run the schema:
 psql $DATABASE_URL -f database/schema.sql
 psql $DATABASE_URL -f database/sample-products.sql
 ```
+
+> **Note**: The JSON file structure matches the Neon database schema for easy migration.
 
 ### 4. Run Development Server
 
@@ -166,20 +180,30 @@ Products support complex configurations:
 }
 ```
 
-## 🔐 Stripe Integration
+## 🔐 Stripe Integration (Optional)
+
+Stripe integration is **optional**. The template works without it for showcasing products.
 
 ### Setup
 
 1. Create account at [stripe.com](https://stripe.com)
 2. Get API keys from Dashboard → Developers → API keys
-3. Set up webhook endpoint: `https://your-site.netlify.app/.netlify/functions/stripe_webhook`
-4. Listen for events: `checkout.session.completed`, `payment_intent.succeeded`
+3. Add keys to `.env` file
+4. Set up webhook endpoint: `https://your-site.netlify.app/.netlify/functions/stripe_webhook`
+5. Listen for events: `checkout.session.completed`, `payment_intent.succeeded`
 
 ### Testing
 
 Use Stripe test cards:
 - Success: `4242 4242 4242 4242`
 - Decline: `4000 0000 0000 0002`
+
+### Without Stripe
+
+If you don't configure Stripe:
+- Products and cart will work normally
+- Checkout button will show a configuration message
+- You can still use the template as a product catalog
 
 ## 🚢 Deployment
 
@@ -214,9 +238,34 @@ netlify deploy --prod
 
 ### Products
 
+**Using JSON File:**
+- Edit `database/sample-products.json`
+- Update product details, images, and pricing
+- Add your product images to `/public/images/`
+
+**Using Database:**
 - Add products via SQL inserts or create an admin panel
 - Update `sample-products.sql` with your inventory
 - Modify product schema if needed
+
+**Product JSON Structure:**
+```json
+{
+  "sku": "PROD-001",
+  "name": "Product Name",
+  "description": "Short description",
+  "long_desc": "Detailed description",
+  "img": "/images/product-1.jpg",
+  "images": ["/images/product-1-1.jpg"],
+  "price_cents": 2999,
+  "stock": 50,
+  "brand": "Brand Name",
+  "category": ["category1"],
+  "features": ["Feature 1", "Feature 2"],
+  "variants": null,
+  "active": true
+}
+```
 
 ### Styles
 

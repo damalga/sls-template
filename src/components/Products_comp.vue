@@ -17,13 +17,13 @@
               <!-- Stock badge (solo en shop) -->
               <div v-if="showStock" class="product-stock">
                 <span v-if="variantsStore.hasAnyVariantInStock(product)" class="stock-badge in-stock"
-                  >Disponible</span
+                  >In stock</span
                 >
-                <span v-else class="stock-badge out-of-stock">Agotado</span>
+                <span v-else class="stock-badge out-of-stock">Out of stock</span>
               </div>
             </div>
 
-            <!-- Controles del carrito (solo en shop) -->
+            <!-- Controles del cart (solo en shop) -->
             <div v-if="showCartControls" class="product-cart-controls">
               <div v-if="cartStore.isInCart(product)" class="quantity-controls">
                 <button
@@ -46,13 +46,13 @@
                 @click="addToCart(product)"
                 :disabled="!variantsStore.isProductAvailable(product)"
               >
-                {{ variantsStore.isProductAvailable(product) ? 'Añadir al carrito' : 'Agotado' }}
+                {{ variantsStore.isProductAvailable(product) ? 'Add to cart' : 'Out of stock' }}
               </button>
             </div>
 
             <!-- Botón simple (solo en home) -->
             <button v-else class="product-cta" @click="openProductModal(product)">
-              Ver producto
+              View product
             </button>
           </div>
         </div>
@@ -71,7 +71,7 @@ import { useProductVariantsStore } from '@/stores/productVariantsStore'
 const props = defineProps({
   title: {
     type: String,
-    default: 'Productos destacados',
+    default: 'Products destacados',
   },
   showTitle: {
     type: Boolean,
@@ -79,7 +79,7 @@ const props = defineProps({
   },
   limit: {
     type: Number,
-    default: null, // null = mostrar todos
+    default: null, // null = show todos
   },
   productsList: {
     type: Array,
@@ -87,11 +87,11 @@ const props = defineProps({
   },
   showStock: {
     type: Boolean,
-    default: false, // mostrar badges de stock
+    default: false, // show badges de stock
   },
   showCartControls: {
     type: Boolean,
-    default: false, // mostrar controles de carrito
+    default: false, // show controles de cart
   },
 })
 
@@ -99,7 +99,7 @@ const productModalStore = useProductModalStore()
 const cartStore = useCartStore()
 const variantsStore = useProductVariantsStore()
 
-// Productos a mostrar según configuración
+// Products a show según configuración
 const displayedProducts = computed(() => {
   const productsToShow = props.productsList
 

@@ -85,7 +85,7 @@ export const useProductVariantsStore = defineStore('productVariants', () => {
     return features
   }
 
-  // Función para verificar si un producto está disponible con la variante seleccionada
+  // Función para verificar si un producto está in stock con la variante seleccionada
   const isProductAvailable = (product) => {
     if (!product.variants) {
       return product.inStock
@@ -117,7 +117,7 @@ export const useProductVariantsStore = defineStore('productVariants', () => {
     })
   }
 
-  // Función para obtener el stock disponible de la variante seleccionada
+  // Función para obtener el stock in stock de la variante seleccionada
   const getVariantStock = (product) => {
     if (!product.variants) {
       return null // No hay variantes, no aplica

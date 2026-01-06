@@ -21,7 +21,7 @@
       </button>
 
       <div v-if="product" class="modal-body">
-        <!-- Galería de imágenes -->
+        <!-- Image gallery -->
         <div class="modal-images">
           <div class="main-image">
             <img
@@ -92,9 +92,9 @@
           <div class="product-price">
             <span class="price">€{{ variantsStore.getProductPrice(product) }}</span>
             <span v-if="variantsStore.hasAnyVariantInStock(product)" class="stock in-stock"
-              >Disponible</span
+              >In stock</span
             >
-            <span v-else class="stock out-of-stock">Agotado</span>
+            <span v-else class="stock out-of-stock">Out of stock</span>
           </div>
 
           <p class="product-description">
@@ -124,14 +124,14 @@
       <div class="buttons-modal">
         <!-- Botón para ir a la página del producto -->
         <button @click="navigateToProductPage" class="view-product-page-btn">
-          Ver página completa del producto
+          View full product page
         </button>
 
         <div v-if="cartStore.isInCart(product)" class="quantity-controls">
           <button
             class="quantity-btn"
             @click="updateQuantity(cartStore.getItemQuantity(product) - 1)"
-            aria-label="Disminuir cantidad"
+            aria-label="Decrease quantity"
             :aria-describedby="`quantity-${product.id}`"
           >
             -
@@ -142,15 +142,15 @@
           <button
             class="quantity-btn"
             @click="updateQuantity(cartStore.getItemQuantity(product) + 1)"
-            aria-label="Aumentar cantidad"
+            aria-label="Increase quantity"
             :aria-describedby="`quantity-${product.id}`"
             :disabled="isMaxQuantityReached"
-            :title="isMaxQuantityReached ? `Máximo ${QUANTITY_LIMITS.MAX} unidades` : ''"
+            :title="isMaxQuantityReached ? `Maximum ${QUANTITY_LIMITS.MAX} units` : ''"
           >
             +
           </button>
-          <button class="remove-btn" @click="removeFromCart" aria-label="Quitar del carrito">
-            Quitar del carrito
+          <button class="remove-btn" @click="removeFromCart" aria-label="Remove from cart">
+            Remove from cart
           </button>
         </div>
 
@@ -160,10 +160,10 @@
           @click="addToCart"
           :disabled="!variantsStore.isProductAvailable(product)"
           :aria-label="
-            variantsStore.isProductAvailable(product) ? 'Añadir al carrito' : 'Producto agotado'
+            variantsStore.isProductAvailable(product) ? 'Add to cart' : 'Producto out of stock'
           "
         >
-          {{ variantsStore.isProductAvailable(product) ? 'Añadir al carrito' : 'Agotado' }}
+          {{ variantsStore.isProductAvailable(product) ? 'Add to cart' : 'Out of stock' }}
         </button>
       </div>
     </div>

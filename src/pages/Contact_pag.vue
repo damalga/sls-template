@@ -15,31 +15,31 @@ import Cart from '../components/Cart_comp.vue'
 
 // SEO Meta Tags
 usePageMeta({
-  title: 'a c k e e d | Contacto',
+  title: 'SLS Shop | Contact',
   description:
-    'Contacta con Hackeed para consultas sobre productos, soporte técnico o colaboraciones. Escríbenos a hackeed.es@proton.me',
-  keywords: 'contacto hackeed, soporte técnico, consultas pentesting, ayuda compra hardware',
-  url: 'https://hackeed.com/contact',
-  image: 'https://hackeed.com/images/og-contact.jpg',
+    'Contacta con SLS Shop para consultas sobre productos, soporte técnico o colaboraciones. Escríbenos a contact@your-domain.com',
+  keywords: 'contact sls-shop, soporte técnico, consultas pentesting, ayuda compra hardware',
+  url: 'https://your-domain.com/contact',
+  image: 'https://your-domain.com/images/og-contact.jpg',
 })
 
 // Structured Data - ContactPage Schema
 useSchema({
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  name: 'Contacto - Hackeed',
+  name: 'Contact - SLS Shop',
   description:
-    'Contacta con Hackeed para consultas sobre productos, soporte técnico o colaboraciones. Escríbenos a hackeed.es@proton.me',
-  url: 'https://hackeed.com/contact',
+    'Contacta con SLS Shop para consultas sobre productos, soporte técnico o colaboraciones. Escríbenos a contact@your-domain.com',
+  url: 'https://your-domain.com/contact',
   mainEntity: {
     '@type': 'Organization',
-    name: 'Hackeed',
-    email: 'hackeed.es@proton.me',
+    name: 'SLS Shop',
+    email: 'contact@your-domain.com',
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'hackeed.es@proton.me',
+      email: 'contact@your-domain.com',
       contactType: 'Customer Service',
-      availableLanguage: ['Spanish', 'English'],
+      availableLanguage: ['English', 'English'],
       areaServed: 'ES',
     },
   },

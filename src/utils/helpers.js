@@ -31,8 +31,8 @@ export function isValidEmail(email) {
   return emailRegex.test(email)
 }
 
-// Validate Spanish phone number format
-export function isValidSpanishPhone(phone) {
+// Validate English phone number format
+export function isValidEnglishPhone(phone) {
   const cleanPhone = phone.replace(/\s/g, '')
   return /^(\+34|0034|34)?[6789]\d{8}$/.test(cleanPhone)
 }
@@ -83,7 +83,7 @@ export function generateSlug(text) {
   return text
     .toLowerCase()
     .trim()
-    // Replace Spanish special characters
+    // Replace English special characters
     .replace(/á/g, 'a')
     .replace(/é/g, 'e')
     .replace(/í/g, 'i')
@@ -177,12 +177,12 @@ export function generateTimestamp() {
 // Get order status text
 export function getOrderStatusText(status) {
   const statusMap = {
-    pending: 'Pendiente',
-    processing: 'Procesando',
-    shipped: 'Enviado',
-    delivered: 'Entregado',
-    cancelled: 'Cancelado',
-    disputed: 'Disputado'
+    pending: 'Pending',
+    processing: 'Processing',
+    shipped: 'Shipped',
+    delivered: 'Delivered',
+    cancelled: 'Cancelled',
+    disputed: 'Disputed'
   }
   return statusMap[status] || status
 }
@@ -252,15 +252,15 @@ export function validateCustomerData(customerData) {
   const errors = []
 
   if (!customerData.email || !isValidEmail(customerData.email)) {
-    errors.push('Email válido es requerido')
+    errors.push('Valid email is required')
   }
 
   if (!customerData.name || customerData.name.trim().length < 2) {
-    errors.push('Nombre debe tener al menos 2 caracteres')
+    errors.push('Name must have at least 2 characters')
   }
 
-  if (customerData.phone && !isValidSpanishPhone(customerData.phone)) {
-    errors.push('Formato de teléfono inválido')
+  if (customerData.phone && !isValidEnglishPhone(customerData.phone)) {
+    errors.push('Invalid phone format')
   }
 
   return {
@@ -349,7 +349,7 @@ export function saveToStorage(key, data) {
     localStorage.setItem(key, JSON.stringify(data))
     return true
   } catch (error) {
-    debugLog('Error guardando en localStorage:', error)
+    debugLog('Error saving to localStorage:', error)
     return false
   }
 }
@@ -444,22 +444,22 @@ export function categorizeError(error) {
   const message = error.message?.toLowerCase() || ''
 
   // Network errors
-  if (message.includes('fetch') || message.includes('network') || message.includes('conexión')) {
+  if (message.includes('fetch') || message.includes('network') || message.includes('connection')) {
     return ERROR_CATEGORIES.NETWORK
   }
 
   // Validation errors
-  if (message.includes('validación') || message.includes('inválido') || message.includes('requerido')) {
+  if (message.includes('validation') || message.includes('invalid') || message.includes('required')) {
     return ERROR_CATEGORIES.VALIDATION
   }
 
   // Stripe errors
-  if (message.includes('stripe') || message.includes('pago') || message.includes('checkout')) {
+  if (message.includes('stripe') || message.includes('payment') || message.includes('checkout')) {
     return ERROR_CATEGORIES.STRIPE
   }
 
   // Server errors
-  if (message.includes('server') || message.includes('servidor') || message.includes('http')) {
+  if (message.includes('server') || message.includes('http')) {
     return ERROR_CATEGORIES.SERVER
   }
 
@@ -468,18 +468,18 @@ export function categorizeError(error) {
 
 // Get user-friendly error message
 export function getUserFriendlyMessage(error) {
-  if (!error) return 'Ha ocurrido un error desconocido'
+  if (!error) return 'An unknown error occurred'
 
   const category = categorizeError(error)
-  const originalMessage = error.message || 'Error desconocido'
+  const originalMessage = error.message || 'Unknown error'
 
   // User-friendly messages by category
   const friendlyMessages = {
-    [ERROR_CATEGORIES.NETWORK]: 'Problema de conexión. Verifica tu conexión a internet e intenta nuevamente.',
+    [ERROR_CATEGORIES.NETWORK]: 'Connection problem. Check your internet connection and try again.',
     [ERROR_CATEGORIES.VALIDATION]: originalMessage, // Validation messages are usually clear
-    [ERROR_CATEGORIES.STRIPE]: 'Hubo un problema con el sistema de pagos. Por favor intenta nuevamente.',
-    [ERROR_CATEGORIES.SERVER]: 'Error en el servidor. Por favor intenta nuevamente en unos momentos.',
-    [ERROR_CATEGORIES.UNKNOWN]: 'Ha ocurrido un error inesperado. Por favor intenta nuevamente.'
+    [ERROR_CATEGORIES.STRIPE]: 'There was a problem with the payment system. Please try again.',
+    [ERROR_CATEGORIES.SERVER]: 'Server error. Please try again in a few moments.',
+    [ERROR_CATEGORIES.UNKNOWN]: 'An unexpected error occurred. Please try again.'
   }
 
   return friendlyMessages[category] || originalMessage

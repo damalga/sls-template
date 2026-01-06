@@ -11,8 +11,8 @@ import { useHead } from '@vueuse/head'
  * useSchema({
  *   '@context': 'https://schema.org',
  *   '@type': 'Organization',
- *   name: 'Hackeed',
- *   url: 'https://hackeed.com'
+ *   name: 'SLS Shop',
+ *   url: 'https://your-domain.com'
  * })
  *
  * @example

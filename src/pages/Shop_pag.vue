@@ -32,12 +32,12 @@
         <!-- Área principal de productos -->
         <section class="shop-content">
           <div class="shop-header">
-            <h3 class="shop-title">Productos</h3>
+            <h3 class="shop-title">Products</h3>
             <div class="shop-controls">
               <div class="shop-results">
                 <span class="results-current">
-                  Mostrando {{ startIndex + 1 }}-{{ endIndex }} de
-                  {{ sortedProducts.length }} Productos
+                  Showing {{ startIndex + 1 }}-{{ endIndex }} de
+                  {{ sortedProducts.length }} Products
                 </span>
               </div>
               <SortBy v-model="sortBy" @sort-change="handleSortChange" />
@@ -66,13 +66,13 @@
           <!-- Loader mientras cargan productos -->
           <div v-if="loading" class="loader-container">
             <div class="loader"></div>
-            <p>Cargando productos...</p>
+            <p>Loading products...</p>
           </div>
 
           <!-- Mensaje si no hay productos -->
           <div v-if="!loading && sortedProducts.length === 0" class="no-products">
-            <h3>No se encontraron productos</h3>
-            <p>Intenta ajustar los filtros para ver más resultados.</p>
+            <h3>No products found</h3>
+            <p>Try adjusting the filters to see more results.</p>
           </div>
         </section>
       </div>
@@ -99,37 +99,37 @@ import SortBy from '../components/SortBy_comp.vue'
 
 // SEO Meta Tags
 usePageMeta({
-  title: 'a c k e e d | Tienda',
+  title: 'SLS Shop | Shop',
   description:
-    'Explora nuestro catálogo completo de hardware hacking: Flipper Zero, Raspberry Pi, Hak5, RTL-SDR y más. Stock actualizado diariamente. Envíos en 24h desde España.',
+    'Explore our catalog completo de tech products: Flipper Zero, Raspberry Pi, Hak5, RTL-SDR y más. Stock actualizado diariamente. Envíos en 24h desde ES.',
   keywords:
-    'comprar flipper zero, tienda raspberry pi, hak5 españa, herramientas pentesting, productos hacking, gadgets ciberseguridad',
-  url: 'https://hackeed.com/shop',
-  image: 'https://hackeed.com/images/og-shop.jpg',
+    'buy products, shop raspberry pi, hak5 es, tech tools, tech products, gadgets ciberseguridad',
+  url: 'https://your-domain.com/shop',
+  image: 'https://your-domain.com/images/og-shop.jpg',
 })
 
 // Structured Data - CollectionPage Schema
 useSchema({
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'Tienda de Hardware Hacking',
+  name: 'Shop de Tech Products',
   description:
-    'Catálogo completo de productos de hardware hacking y pentesting: Flipper Zero, Raspberry Pi, Hak5, RTL-SDR y más',
-  url: 'https://hackeed.com/shop',
+    'Complete catalog de productos de tech products y pentesting: Flipper Zero, Raspberry Pi, Hak5, RTL-SDR y más',
+  url: 'https://your-domain.com/shop',
   isPartOf: {
     '@type': 'WebSite',
-    name: 'Hackeed',
-    url: 'https://hackeed.com',
+    name: 'SLS Shop',
+    url: 'https://your-domain.com',
   },
   about: {
     '@type': 'Thing',
-    name: 'Hardware Hacking',
+    name: 'Tech Products',
     description:
-      'Productos y herramientas para pentesting, hacking ético, ciberseguridad y proyectos tecnológicos',
+      'Products and tools para pentesting, hacking ético, ciberseguridad y proyectos tecnológicos',
   },
 })
 
-// Productos de Neon
+// Products de Neon
 const { products, loadProducts, loading, error } = useProducts()
 
 // Stripe & Cart
@@ -176,7 +176,7 @@ const activeFiltersCount = computed(() => {
   return count
 })
 
-// Productos filtrados
+// Products filtrados
 const filteredProducts = computed(() => {
   let filtered = [...products.value]
 
@@ -240,7 +240,7 @@ const getBrandCount = (brand) => {
   return filteredProducts.value.filter((product) => product.brand === brand).length
 }
 
-// Productos ordenados
+// Products ordenados
 const sortedProducts = computed(() => {
   const sorted = [...filteredProducts.value]
 
@@ -306,7 +306,7 @@ const endIndex = computed(() =>
   Math.min(startIndex.value + itemsPerPage, sortedProducts.value.length)
 )
 
-// Productos paginados
+// Products paginados
 const sortedAndPaginatedProducts = computed(() => {
   return sortedProducts.value.slice(startIndex.value, endIndex.value)
 })

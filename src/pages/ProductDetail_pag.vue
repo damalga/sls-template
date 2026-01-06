@@ -4,20 +4,20 @@
   <main class="product-detail-page">
     <!-- Loading state -->
     <div v-if="loading" class="loading-state">
-      <p>Cargando producto...</p>
+      <p>Loading product...</p>
     </div>
 
     <!-- Error state -->
     <div v-else-if="error" class="error-state">
-      <h2>Producto no encontrado</h2>
+      <h2>Product not found</h2>
       <p>{{ error }}</p>
-      <router-link to="/shop" class="back-to-shop-btn">Volver a la tienda</router-link>
+      <router-link to="/shop" class="back-to-shop-btn">Back to shop</router-link>
     </div>
 
     <!-- Product detail -->
     <div v-else-if="product" class="product-detail-container">
       <div class="product-detail-content">
-        <!-- Galería de imágenes -->
+        <!-- Image gallery -->
         <div class="product-images">
           <div class="main-image">
             <img
@@ -88,9 +88,9 @@
           <div class="product-price">
             <span class="price">€{{ variantsStore.getProductPrice(product) }}</span>
             <span v-if="variantsStore.hasAnyVariantInStock(product)" class="stock in-stock"
-              >Disponible</span
+              >In stock</span
             >
-            <span v-else class="stock out-of-stock">Agotado</span>
+            <span v-else class="stock out-of-stock">Out of stock</span>
           </div>
 
           <p class="product-description">
@@ -118,13 +118,13 @@
 
       <!-- Botones -->
       <div class="buttons-detail">
-        <!-- Botón volver a tienda -->
-        <button @click="navigateToShop" class="back-to-shop">Volver a la tienda</button>
+        <!-- Botón volver a shop -->
+        <button @click="navigateToShop" class="back-to-shop">Back to shop</button>
         <div v-if="cartStore.isInCart(product)" class="quantity-controls">
           <button
             class="quantity-btn"
             @click="updateQuantity(cartStore.getItemQuantity(product) - 1)"
-            aria-label="Disminuir cantidad"
+            aria-label="Decrease quantity"
             :aria-describedby="`quantity-${product.id}`"
           >
             -
@@ -135,15 +135,15 @@
           <button
             class="quantity-btn"
             @click="updateQuantity(cartStore.getItemQuantity(product) + 1)"
-            aria-label="Aumentar cantidad"
+            aria-label="Increase quantity"
             :aria-describedby="`quantity-${product.id}`"
             :disabled="isMaxQuantityReached"
-            :title="isMaxQuantityReached ? `Máximo ${QUANTITY_LIMITS.MAX} unidades` : ''"
+            :title="isMaxQuantityReached ? `Maximum ${QUANTITY_LIMITS.MAX} units` : ''"
           >
             +
           </button>
-          <button class="remove-btn" @click="removeFromCart" aria-label="Quitar del carrito">
-            Quitar del carrito
+          <button class="remove-btn" @click="removeFromCart" aria-label="Remove from cart">
+            Remove from cart
           </button>
         </div>
         <button
@@ -152,10 +152,10 @@
           @click="addToCart"
           :disabled="!variantsStore.isProductAvailable(product)"
           :aria-label="
-            variantsStore.isProductAvailable(product) ? 'Añadir al carrito' : 'Producto agotado'
+            variantsStore.isProductAvailable(product) ? 'Add to cart' : 'Product out of stock'
           "
         >
-          {{ variantsStore.isProductAvailable(product) ? 'Añadir al carrito' : 'Agotado' }}
+          {{ variantsStore.isProductAvailable(product) ? 'Add to cart' : 'Out of stock' }}
         </button>
       </div>
     </div>
@@ -229,9 +229,9 @@ watch(
       const imageUrl = newProduct.images?.[0] || newProduct.img
 
       usePageMeta({
-        title: `${newProduct.name} | Hackeed`,
+        title: `${newProduct.name} | SLS Shop`,
         description:
-          newProduct.longDesc || newProduct.desc || `Compra ${newProduct.name} en Hackeed`,
+          newProduct.longDesc || newProduct.desc || `Buy ${newProduct.name} en SLS Shop`,
         url: productUrl,
         image: imageUrl,
         type: 'product',
@@ -301,7 +301,7 @@ onMounted(async () => {
 
     // Verificar que el producto existe
     if (!product.value) {
-      error.value = 'El producto que buscas no existe o ya no está disponible.'
+      error.value = 'The product you are looking for does not exist or is no longer in stock.'
     } else {
       // Inicializar imagen cuando el producto está cargado
       if (product.value.images && product.value.images.length > 0) {

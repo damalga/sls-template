@@ -106,7 +106,7 @@
 
     <!-- Filtro por disponibilidad -->
     <div class="filter-group stock-filter">
-      <h4 class="filter-group-title">Disponibilidad</h4>
+      <h4 class="filter-group-title">Availability</h4>
       <div class="filter-options">
         <div class="filter-option" @click="toggleStock('inStock')">
           <div
@@ -114,9 +114,9 @@
             :class="{ checked: selectedStock.includes('inStock') }"
           ></div>
           <span class="filter-label" :class="{ active: selectedStock.includes('inStock') }">
-            Disponible
+            In stock
           </span>
-          <span class="stock-badge in-stock">Disponible</span>
+          <span class="stock-badge in-stock">In stock</span>
         </div>
         <div class="filter-option" @click="toggleStock('outOfStock')">
           <div
@@ -131,17 +131,17 @@
               active: selectedStock.includes('outOfStock'),
             }"
           >
-            Agotado
+            Out of stock
           </span>
-          <span class="stock-badge out-of-stock">Agotado</span>
+          <span class="stock-badge out-of-stock">Out of stock</span>
         </div>
       </div>
     </div>
 
     <!-- Acciones de filtros -->
     <div class="filter-actions">
-      <button class="apply-filters-btn" @click="applyFilters">Aplicar filtros</button>
-      <button class="clear-filters-btn" @click="clearAllFilters">Limpiar filtros</button>
+      <button class="apply-filters-btn" @click="applyFilters">Apply filters</button>
+      <button class="clear-filters-btn" @click="clearAllFilters">Clear filters</button>
     </div>
   </div>
 </template>
