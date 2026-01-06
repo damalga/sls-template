@@ -22,9 +22,9 @@ $color-border-secondary: #dddddd;
 
 // States
 $color-success: #000000;
-$color-error: #000000;
-$color-dark-error: #333333;
-$color-warning: #000000;
+$color-error: #cc0000;
+$color-dark-error: #990000;
+$color-warning: #ff8800;
 
 // Shadows
 $shadow-light: rgba(0, 0, 0, 0.05);
@@ -56,82 +56,4 @@ $shadow-dark: rgba(0, 0, 0, 0.1);
   --shadow-dark: #{$shadow-dark};
 }
 
-// Mixins botones
-@mixin button-base {
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: 2px solid;
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
-  background: none;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-}
-
-@mixin button-primary {
-  @include button-base;
-  background: $color-accent-primary;
-  color: $color-bg-primary;
-  border-color: $color-accent-primary;
-
-  &:hover {
-    color: var(--bg-primary);
-    background: $color-accent-secondary;
-    border-color: $color-accent-secondary;
-  }
-
-  &:disabled {
-    background: $color-bg-tertiary;
-    color: $color-text-tertiary;
-    border-color: $color-border-primary;
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-}
-
-@mixin button-secondary {
-  @include button-base;
-  background: $color-bg-tertiary;
-  color: $color-text-primary;
-  border-color: $color-success;
-
-  &:hover:not(:disabled) {
-    background: $color-accent-primary;
-    color: $color-bg-primary;
-    border-color: $color-accent-primary;
-  }
-
-  &:disabled {
-    background: $color-bg-tertiary;
-    color: $color-text-tertiary;
-    border-color: $color-border-primary;
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-}
-
-@mixin button-danger {
-  @include button-base;
-  background: $color-error;
-  color: $color-text-primary;
-  border-color: $color-error;
-
-  &:hover:not(:disabled) {
-    background: color.scale($color-error, $lightness: -10%);
-    border-color: color.scale($color-error, $lightness: -10%);
-  }
-}
-
-@mixin button-small {
-  @include button-base;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-}
-
-@mixin button-large {
-  @include button-base;
-  padding: 1rem 1.5rem;
-  font-size: 1.125rem;
-}
+// Los mixins de botones están ahora en _buttons.scss

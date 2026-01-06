@@ -1,0 +1,113 @@
+@use 'colors' as *;
+
+// MIXINS DE BOTONES
+// Todos los botones tienen borde negro de 2px por defecto
+
+@mixin button-base {
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid #000000;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  background: none;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: $color-accent-primary;
+  color: $color-bg-primary;
+  border-color: #000000;
+
+  &:hover:not(:disabled) {
+    background: $color-accent-secondary;
+    color: $color-bg-primary;
+    border-color: #000000;
+  }
+
+  &:disabled {
+    background: $color-bg-tertiary;
+    color: $color-text-tertiary;
+    border-color: $color-border-primary;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background: $color-bg-tertiary;
+  color: $color-text-primary;
+  border-color: #000000;
+
+  &:hover:not(:disabled) {
+    background: $color-accent-primary;
+    color: $color-bg-primary;
+    border-color: #000000;
+  }
+
+  &:disabled {
+    background: $color-bg-tertiary;
+    color: $color-text-tertiary;
+    border-color: $color-border-primary;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@mixin button-danger {
+  @include button-base;
+  background: $color-error;
+  color: $color-bg-primary;
+  border-color: #000000;
+
+  &:hover:not(:disabled) {
+    background: $color-dark-error;
+    color: $color-bg-primary;
+    border-color: #000000;
+  }
+
+  &:disabled {
+    background: $color-bg-tertiary;
+    color: $color-text-tertiary;
+    border-color: $color-border-primary;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@mixin button-cancel {
+  @include button-base;
+  background: $color-bg-quaternary;
+  color: $color-text-primary;
+  border-color: #000000;
+
+  &:hover:not(:disabled) {
+    background: $color-bg-tertiary;
+    color: $color-text-primary;
+    border-color: #000000;
+  }
+
+  &:disabled {
+    background: $color-bg-tertiary;
+    color: $color-text-tertiary;
+    border-color: $color-border-primary;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@mixin button-small {
+  @include button-base;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+@mixin button-large {
+  @include button-base;
+  padding: 1rem 1.5rem;
+  font-size: 1.125rem;
+}

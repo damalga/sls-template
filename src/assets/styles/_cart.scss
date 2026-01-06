@@ -1,4 +1,5 @@
 @use '_colors.scss' as *;
+@use '_buttons.scss' as *;
 
 // Header cart styles with dark theme
 .header-cart {
@@ -179,19 +180,19 @@
 .remove-item {
   font-size: 0.9rem;
   background: none;
-  color: $color-warning;
+  color: var(--warning);
   border: none;
   cursor: pointer;
   transition: color 0.2s;
   &:hover {
-    color: $color-error;
+    color: var(--error);
   }
 }
 
 // Cart summary sidebar
 .cart-summary {
   position: sticky;
-  top: 1.25rem;
+  top: 6rem;
   height: fit-content;
 }
 

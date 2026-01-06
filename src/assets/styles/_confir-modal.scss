@@ -1,4 +1,5 @@
 @use 'colors' as *;
+@use 'buttons' as *;
 @use 'fades' as *;
 
 .modal-overlay {
@@ -30,7 +31,7 @@
 
   .modal-header {
     padding: 1rem 1.6rem;
-    border-bottom: 1px solid $color-text-primary;
+    border-bottom: 1px solid var(--text-primary);
   }
 
   .modal-title {
@@ -67,11 +68,7 @@
   }
 
   .modal-btn-cancel {
-    background-color: $color-bg-quaternary;
-    color: $color-text-quaternary;
-    &:hover {
-      background-color: $color-text-secondary;
-    }
+    @include button-cancel;
   }
 
   .modal-btn-confirm {
