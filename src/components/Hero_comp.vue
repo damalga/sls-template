@@ -1,10 +1,12 @@
 <template>
   <section class="hero">
     <div class="hero-container">
-      <div class="hero-content">
+      <div class="hero-text">
         <h1 class="hero-title">Welcome to SLS Shop</h1>
-        <p class="hero-subtitle">Your modern serverless e-commerce store</p>
-        <router-link to="/shop" class="hero-cta">Browse Products</router-link>
+        <p class="hero-desc">Your future serverless e-commerce</p>
+        <button class="hero-cta" @click="$router.push('/shop')">
+          Browse Products
+        </button>
       </div>
     </div>
   </section>

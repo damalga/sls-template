@@ -172,12 +172,14 @@
 
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useProductModalStore } from '@/stores/productModalStore'
 import { useCartStore } from '@/stores/cartStore'
 import { useProductVariantsStore } from '@/stores/productVariantsStore'
 import ProductVariants from './ProductVariants_comp.vue'
 import { QUANTITY_LIMITS, getProductSlug } from '@/utils/helpers'
 
+const router = useRouter()
 const productModalStore = useProductModalStore()
 const cartStore = useCartStore()
 const variantsStore = useProductVariantsStore()
@@ -274,7 +276,8 @@ const removeFromCart = () => {
 const navigateToProductPage = () => {
   if (!product.value) return
   const slug = getProductSlug(product.value)
-  window.location.href = `/product/${slug}`
+  closeModal()
+  router.push(`/product/${slug}`)
 }
 
 // Cerrar modal con tecla Escape

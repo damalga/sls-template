@@ -290,7 +290,7 @@ const removeFromCart = () => {
 }
 
 const navigateToShop = () => {
-  window.location.href = '/shop'
+  router.push('/shop')
 }
 
 // Cargar productos al montar

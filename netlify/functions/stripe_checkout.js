@@ -14,7 +14,7 @@ export async function handler(event) {
   }
 
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: JSON.stringify({ error: 'Método no permitido' }) };
+    return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
   }
 
   try {
@@ -29,7 +29,7 @@ export async function handler(event) {
       return {
         statusCode: 400,
         body: JSON.stringify({
-          error: 'No hay productos en tu carrito. Agrega productos antes de continuar.'
+          error: 'No products in your cart. Add products before continuing.'
         })
       };
     }
@@ -62,7 +62,7 @@ export async function handler(event) {
       return {
         statusCode: 400,
         body: JSON.stringify({
-          error: 'Algunos productos en tu carrito ya no están disponibles. Actualiza tu carrito y revisa la disponibilidad.'
+          error: 'Some products in your cart are no longer available. Update your cart and check availability.'
         })
       };
     }
@@ -77,16 +77,16 @@ export async function handler(event) {
 
       const dbProduct = dbProducts.find(p => p.id === item.id);
       if (!dbProduct) {
-        throw new Error(`El producto "${item.name || item.id}" ya no está disponible.`);
+        throw new Error(`Product "${item.name || item.id}" is no longer available.`);
       }
 
       // Validate quantity
       if (!item.quantity || item.quantity <= 0 || !Number.isInteger(item.quantity)) {
-        throw new Error(`Cantidad inválida para "${dbProduct.name}". La cantidad debe ser un número entero positivo.`);
+        throw new Error(`Invalid quantity for "${dbProduct.name}". Quantity must be a positive integer.`);
       }
 
       if (item.quantity > 10) {
-        throw new Error(`Cantidad inválida para "${dbProduct.name}". Máximo permitido: 10 unidades por producto.`);
+        throw new Error(`Invalid quantity for "${dbProduct.name}". Maximum allowed: 10 units per product.`);
       }
 
       // Parse variants if present
@@ -114,7 +114,7 @@ export async function handler(event) {
         });
 
         if (!selectedOption) {
-          throw new Error(`La variante seleccionada de "${dbProduct.name}" ya no está disponible.`);
+          throw new Error(`The selected variant of "${dbProduct.name}" is no longer available.`);
         }
 
         availableStock = selectedOption.stock !== undefined ? selectedOption.stock : 0;
@@ -138,12 +138,12 @@ export async function handler(event) {
       });
 
       if (availableStock === null || availableStock === undefined) {
-        throw new Error(`No se pudo determinar el stock para "${dbProduct.name}". Por favor, contacta con soporte.`);
+        throw new Error(`Could not determine stock for "${dbProduct.name}". Please contact support.`);
       }
 
       if (availableStock < item.quantity) {
         const productName = item.variants ? item.name : dbProduct.name;
-        throw new Error(`No hay suficiente stock para "${productName}". Stock disponible: ${availableStock}, solicitado: ${item.quantity}.`);
+        throw new Error(`Not enough stock for "${productName}". Available stock: ${availableStock}, requested: ${item.quantity}.`);
       }
 
       // Prepare metadata for webhook
@@ -178,7 +178,7 @@ export async function handler(event) {
       cancel_url: `${process.env.VITE_APP_URL}/cart`,
       customer_email: customerEmail,
       billing_address_collection: 'required',
-      locale: 'es'
+      locale: 'en'
     });
 
     return {
@@ -198,27 +198,27 @@ export async function handler(event) {
 
     // Network/Stripe API errors
     if (err.type === 'StripeConnectionError' || err.message.includes('network')) {
-      userMessage = 'No se pudo conectar con el servicio de pagos. Verifica tu conexión a internet e intenta nuevamente.';
+      userMessage = 'Could not connect to payment service. Check your internet connection and try again.';
       statusCode = 503;
     }
     // Stripe validation errors
     else if (err.type === 'StripeInvalidRequestError') {
-      userMessage = 'Hay un problema con los datos de pago. Por favor, revisa la información e intenta de nuevo.';
+      userMessage = 'There is a problem with the payment data. Please review the information and try again.';
       statusCode = 400;
     }
     // Authentication errors (API keys)
     else if (err.type === 'StripeAuthenticationError') {
-      userMessage = 'Error de configuración del sistema de pagos. Por favor, contacta con soporte técnico.';
+      userMessage = 'Payment system configuration error. Please contact technical support.';
       statusCode = 500;
     }
     // Database errors
-    else if (err.message.includes('stock') || err.message.includes('disponible')) {
+    else if (err.message.includes('stock') || err.message.includes('available')) {
       // Already has descriptive message, keep it
       statusCode = 400;
     }
     // Generic error
-    else if (statusCode === 500 && !err.message.includes('stock') && !err.message.includes('disponible')) {
-      userMessage = 'Ocurrió un error al procesar tu solicitud. Por favor, intenta nuevamente o contacta con soporte si el problema persiste.';
+    else if (statusCode === 500 && !err.message.includes('stock') && !err.message.includes('available')) {
+      userMessage = 'An error occurred while processing your request. Please try again or contact support if the problem persists.';
     }
 
     return {

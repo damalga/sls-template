@@ -12,7 +12,7 @@ export async function handler(event) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ error: 'Acceso denegado' })
+      body: JSON.stringify({ error: 'Access denied' })
     };
   }
   try {

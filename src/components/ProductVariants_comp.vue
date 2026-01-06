@@ -32,8 +32,7 @@
             </span>
           </div>
           <!-- Stock info -->
-          <div v-if="!option.inStock" class="out-of-stock-badge">Out of stock</div>
-          <div v-else-if="option.stock !== undefined && option.stock <= 5" class="low-stock-badge">
+          <div v-if="option.inStock && option.stock !== undefined && option.stock <= 5" class="low-stock-badge">
             Only {{ option.stock }} {{ option.stock === 1 ? 'unit' : 'units' }}
           </div>
         </label>

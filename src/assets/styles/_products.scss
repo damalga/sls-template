@@ -34,14 +34,11 @@
   transform: translateY(-0.1rem);
   box-shadow: 0 8px 20px var(--shadow-dark);
   border-color: var(--accent-primary);
-  .product-image {
-    background: var(--accent-primary);
-  }
 }
 
 .product-image {
   height: 15.625rem;
-  background: var(--bg-quaternary);
+  background: #ffffff;
   border-bottom: 1px solid var(--border-primary);
   display: flex;
   align-items: center;

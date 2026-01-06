@@ -56,12 +56,7 @@
       .hero-cta {
         @include button-primary;
         font-size: 1.1rem;
-        a {
-          display: block;
-          color: var(--text-quaternary);
-          text-decoration: none;
-          line-height: 1.8rem;
-        }
+        cursor: pointer;
       }
     }
   }

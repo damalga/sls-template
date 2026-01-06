@@ -49,6 +49,7 @@ export const sampleProducts = [
     long_desc: "This is a longer description for Sample Product 1. You can add detailed information about the product features, specifications, and benefits here. Replace this text with your own product information.",
     img: "/images/product-1.jpg",
     images: [
+      "/images/product-1.jpg",
       "/images/product-1-1.jpg",
       "/images/product-1-2.jpg",
       "/images/product-1-3.jpg"
@@ -73,6 +74,7 @@ export const sampleProducts = [
     long_desc: "Sample Product 2 comes in multiple colors. This product demonstrates how to use variants in your e-commerce template. Each variant can have its own stock level.",
     img: "/images/product-2.jpg",
     images: [
+      "/images/product-2.jpg",
       "/images/product-2-1.jpg",
       "/images/product-2-2.jpg"
     ],
@@ -81,17 +83,19 @@ export const sampleProducts = [
     brand: "Sample Brand",
     category: ["electronics", "accessories"],
     features: [
-      "Available in multiple colors",
+      "Available in multiple variants",
       "Premium materials",
       "Compact design",
       "Free shipping"
     ],
     variants: {
-      name: "Color",
+      name: "Variants",
+      default: "black",
       options: [
         {
           id: "black",
           name: "Black",
+          price: 49.99,
           stock: 15,
           inStock: true,
           selected: {
@@ -101,6 +105,7 @@ export const sampleProducts = [
         {
           id: "white",
           name: "White",
+          price: 49.99,
           stock: 10,
           inStock: true,
           selected: {
@@ -110,6 +115,7 @@ export const sampleProducts = [
         {
           id: "red",
           name: "Red",
+          price: 49.99,
           stock: 0,
           inStock: false,
           selected: {
@@ -127,6 +133,7 @@ export const sampleProducts = [
     long_desc: "This is Sample Product 3. Replace this with your actual product information. Add detailed specifications, usage instructions, and any other relevant information that your customers need to know.",
     img: "/images/product-3.jpg",
     images: [
+      "/images/product-3.jpg",
       "/images/product-3-1.jpg",
       "/images/product-3-2.jpg",
       "/images/product-3-3.jpg",
@@ -152,6 +159,7 @@ export const sampleProducts = [
     long_desc: "Sample Product 4 is available in different sizes. This demonstrates another type of variant configuration. Each size has its own pricing and stock management.",
     img: "/images/product-4.jpg",
     images: [
+      "/images/product-4.jpg",
       "/images/product-4-1.jpg",
       "/images/product-4-2.jpg"
     ],
@@ -160,17 +168,19 @@ export const sampleProducts = [
     brand: "Sample Brand",
     category: ["clothing", "accessories"],
     features: [
-      "Available in multiple sizes",
+      "Available in multiple variants",
       "Comfortable fit",
       "High-quality fabric",
       "Machine washable"
     ],
     variants: {
-      name: "Size",
+      name: "Variants",
+      default: "small",
       options: [
         {
           id: "small",
           name: "Small",
+          price: 34.99,
           stock: 8,
           inStock: true,
           selected: {
@@ -180,6 +190,7 @@ export const sampleProducts = [
         {
           id: "medium",
           name: "Medium",
+          price: 34.99,
           stock: 12,
           inStock: true,
           selected: {
@@ -189,6 +200,7 @@ export const sampleProducts = [
         {
           id: "large",
           name: "Large",
+          price: 34.99,
           stock: 6,
           inStock: true,
           selected: {
@@ -198,6 +210,7 @@ export const sampleProducts = [
         {
           id: "xlarge",
           name: "X-Large",
+          price: 34.99,
           stock: 0,
           inStock: false,
           selected: {
