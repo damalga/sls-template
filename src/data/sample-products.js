@@ -54,8 +54,8 @@ export const sampleProducts = [
       "/images/product-1-2.jpg",
       "/images/product-1-3.jpg"
     ],
-    price_cents: 2999,
-    stock: 50,
+    price_cents: 2900,
+    stock: 10,
     brand: "Sample Brand",
     category: ["electronics", "gadgets"],
     features: [
@@ -78,7 +78,7 @@ export const sampleProducts = [
       "/images/product-2-1.jpg",
       "/images/product-2-2.jpg"
     ],
-    price_cents: 4999,
+    price_cents: 3500,
     stock: 0,
     brand: "Sample Brand",
     category: ["electronics", "accessories"],
@@ -95,8 +95,8 @@ export const sampleProducts = [
         {
           id: "black",
           name: "Black",
-          price: 49.99,
-          stock: 15,
+          price: 3500,
+          stock: 5,
           inStock: true,
           selected: {
             color: "black"
@@ -105,8 +105,8 @@ export const sampleProducts = [
         {
           id: "white",
           name: "White",
-          price: 49.99,
-          stock: 10,
+          price: 4000,
+          stock: 3,
           inStock: true,
           selected: {
             color: "white"
@@ -115,7 +115,7 @@ export const sampleProducts = [
         {
           id: "red",
           name: "Red",
-          price: 49.99,
+          price: 4900,
           stock: 0,
           inStock: false,
           selected: {
@@ -139,8 +139,8 @@ export const sampleProducts = [
       "/images/product-3-3.jpg",
       "/images/product-3-4.jpg"
     ],
-    price_cents: 7999,
-    stock: 25,
+    price_cents: 7900,
+    stock: 2,
     brand: "Premium Brand",
     category: ["home", "accessories"],
     features: [
@@ -163,7 +163,7 @@ export const sampleProducts = [
       "/images/product-4-1.jpg",
       "/images/product-4-2.jpg"
     ],
-    price_cents: 3499,
+    price_cents: 3400,
     stock: 0,
     brand: "Sample Brand",
     category: ["clothing", "accessories"],
@@ -180,8 +180,8 @@ export const sampleProducts = [
         {
           id: "small",
           name: "Small",
-          price: 34.99,
-          stock: 8,
+          price: 3400,
+          stock: 0,
           inStock: true,
           selected: {
             size: "small"
@@ -190,8 +190,8 @@ export const sampleProducts = [
         {
           id: "medium",
           name: "Medium",
-          price: 34.99,
-          stock: 12,
+          price: 3200,
+          stock: 0,
           inStock: true,
           selected: {
             size: "medium"
@@ -200,8 +200,8 @@ export const sampleProducts = [
         {
           id: "large",
           name: "Large",
-          price: 34.99,
-          stock: 6,
+          price: 3000,
+          stock: 0,
           inStock: true,
           selected: {
             size: "large"
@@ -210,7 +210,7 @@ export const sampleProducts = [
         {
           id: "xlarge",
           name: "X-Large",
-          price: 34.99,
+          price: 2800,
           stock: 0,
           inStock: false,
           selected: {

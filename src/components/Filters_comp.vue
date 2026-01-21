@@ -2,7 +2,11 @@
   <div class="shop-filters" :class="{ 'is-open': isOpen }">
     <div class="filters-header">
       <h5 class="filters-title">Filtros</h5>
-      <button class="filters-close" @click="$emit('close')" aria-label="Cerrar filtros">
+      <button
+        class="filters-close"
+        @click="$emit('close')"
+        aria-label="Cerrar filtros"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -21,9 +25,9 @@
       </button>
     </div>
 
-    <!-- Filtro por categoría -->
+    <!-- Categories -->
     <div class="filter-group">
-      <h4 class="filter-group-title">Categoría</h4>
+      <h4 class="filter-group-title">Categories</h4>
       <div class="filter-options">
         <div
           v-for="category in categories"
@@ -52,7 +56,7 @@
 
     <!-- Filtro por marca -->
     <div class="filter-group">
-      <h4 class="filter-group-title">Marca</h4>
+      <h4 class="filter-group-title">Brands</h4>
       <div class="filter-options">
         <div
           v-for="brand in brands"
@@ -79,9 +83,9 @@
       </div>
     </div>
 
-    <!-- Filtro por rango de precio -->
+    <!-- Price range -->
     <div class="filter-group">
-      <h4 class="filter-group-title">Precio</h4>
+      <h4 class="filter-group-title">Price</h4>
       <div class="price-range">
         <div class="price-inputs">
           <input
@@ -104,7 +108,7 @@
       </div>
     </div>
 
-    <!-- Filtro por disponibilidad -->
+    <!-- Availability -->
     <div class="filter-group stock-filter">
       <h4 class="filter-group-title">Availability</h4>
       <div class="filter-options">
@@ -113,7 +117,10 @@
             class="filter-checkbox"
             :class="{ checked: selectedStock.includes('inStock') }"
           ></div>
-          <span class="filter-label" :class="{ active: selectedStock.includes('inStock') }">
+          <span
+            class="filter-label"
+            :class="{ active: selectedStock.includes('inStock') }"
+          >
             In stock
           </span>
           <span class="stock-badge in-stock">In stock</span>
@@ -138,10 +145,14 @@
       </div>
     </div>
 
-    <!-- Acciones de filtros -->
+    <!-- Actions -->
     <div class="filter-actions">
-      <button class="apply-filters-btn" @click="applyFilters">Apply filters</button>
-      <button class="clear-filters-btn" @click="clearAllFilters">Clear filters</button>
+      <button class="apply-filters-btn" @click="applyFilters">
+        Apply filters
+      </button>
+      <button class="clear-filters-btn" @click="clearAllFilters">
+        Clear filters
+      </button>
     </div>
   </div>
 </template>
@@ -178,7 +189,8 @@ const categories = computed(() => {
     }
     // Compatibilidad con formato antiguo (category como string)
     else if (product.category) {
-      categoryCount[product.category] = (categoryCount[product.category] || 0) + 1
+      categoryCount[product.category] =
+        (categoryCount[product.category] || 0) + 1
     }
   })
 
