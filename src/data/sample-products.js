@@ -67,6 +67,7 @@ export const sampleProducts = [
     variants: null,
     active: true
   },
+
   {
     sku: "PROD-002",
     name: "Sample Product 2",
@@ -126,6 +127,7 @@ export const sampleProducts = [
     },
     active: true
   },
+
   {
     sku: "PROD-003",
     name: "Sample Product 3",
@@ -152,6 +154,7 @@ export const sampleProducts = [
     variants: null,
     active: true
   },
+
   {
     sku: "PROD-004",
     name: "Sample Product 4",
@@ -182,7 +185,7 @@ export const sampleProducts = [
           name: "Small",
           price: 3400,
           stock: 0,
-          inStock: true,
+          inStock: false,
           selected: {
             size: "small"
           }
@@ -192,7 +195,7 @@ export const sampleProducts = [
           name: "Medium",
           price: 3200,
           stock: 0,
-          inStock: true,
+          inStock: false,
           selected: {
             size: "medium"
           }
@@ -202,7 +205,7 @@ export const sampleProducts = [
           name: "Large",
           price: 3000,
           stock: 0,
-          inStock: true,
+          inStock: false,
           selected: {
             size: "large"
           }
