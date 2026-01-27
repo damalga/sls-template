@@ -1,14 +1,17 @@
 @use '_colors.scss' as *;
 
 .about-main,
-.sfaq-main {
+.faq-main,
+.contact-main {
   .about-container,
-  .sfaq-container {
+  .faq-container,
+  .contact-container {
     max-width: 1280px;
     padding: 0 2rem;
     margin: 2rem auto;
     .about-section,
-    .sfaq-section {
+    .faq-section,
+    .contact-section {
       h2,
       h3 {
         color: $color-warning;

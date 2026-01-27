@@ -26,7 +26,6 @@ import Hero from '../components/Hero_comp.vue'
 import Slider from '../components/Slider_comp.vue'
 import Products from '../components/Products_comp.vue'
 import Product from '../components/Product_comp.vue'
-import Contact from '../components/Contact_comp.vue'
 import Footer from '../components/Footer_comp.vue'
 
 // SEO Meta Tags
@@ -34,8 +33,7 @@ usePageMeta({
   title: 'SLS Shop | Home',
   description:
     'Online shop specialized in tech products, pentesting, and advanced technology. Fast shipping.',
-  keywords:
-    'tech shop, electronics, gadgets, online store, e-commerce',
+  keywords: 'tech shop, electronics, gadgets, online store, e-commerce',
   url: 'https://your-domain.com',
   image: 'https://your-domain.com/images/og-home.jpg',
 })
@@ -49,8 +47,7 @@ useSchema([
     name: 'SLS Shop',
     url: 'https://your-domain.com',
     logo: 'https://your-domain.com/logo.png',
-    description:
-      'Shop specialized in tech products and advanced technology',
+    description: 'Shop specialized in tech products and advanced technology',
     foundingDate: '2024',
     email: 'contact@your-domain.com',
     contactPoint: {
@@ -77,8 +74,7 @@ useSchema([
     '@type': 'WebSite',
     name: 'SLS Shop',
     url: 'https://your-domain.com',
-    description:
-      'Online shop for tech products and electronics',
+    description: 'Online shop for tech products and electronics',
     publisher: {
       '@type': 'Organization',
       name: 'SLS Shop',
