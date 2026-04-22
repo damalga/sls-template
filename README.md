@@ -340,20 +340,20 @@ pnpm run format
 - Verifica que Netlify CLI esté instalado
 - Asegúrate de que el archivo `.env` existe
 
+## Haz esta plantilla tuya
+
+Esta plantilla es un punto de partida, no un producto final. Está pensada para que la rompas, modifiques y adaptes a tus necesidades:
+
+- Quita lo que no uses (Stripe, la base de datos, páginas que no necesites)
+- Cambia la estructura como te venga mejor
+- Añade tus propias funcionalidades
+- Ajústala a tu caso de uso específico
+
+No hay una forma "correcta" de usarla. Si algo no te sirve, elimínalo. Si necesitas algo diferente, cámbialo.
+
+Si encuentras formas de mejorar la plantilla base o quieres contribuir con mejoras, adelante.
+
 ## Licencia
 
-Licencia MIT - puedes usarla libremente para proyectos personales o comerciales.
-
-## Contribuciones
-
-Las contribuciones son bienvenidas. Puedes:
-- Reportar bugs
-- Sugerir funcionalidades
-- Enviar pull requests
-
-## Créditos
-
-Esta plantilla se creó como base open-source simplificada para construir aplicaciones e-commerce serverless.
-
-Construida con Vue, Netlify, Neon y Stripe.
+MIT - Úsala como quieras, para lo que quieras.
 
