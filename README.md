@@ -353,7 +353,9 @@ No hay una forma "correcta" de usarla. Si algo no te sirve, elimínalo. Si neces
 
 Si encuentras formas de mejorar la plantilla base o quieres contribuir con mejoras, adelante.
 
-## Licencia
+## Demos
 
-MIT - Úsala como quieras, para lo que quieras.
+Proyectos construidos con esta plantilla:
+
+- [hackeed.es](https://hackeed.es) - Tienda de hardware hacking y electrónica
 
