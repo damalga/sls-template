@@ -1,156 +1,158 @@
-# Serverless E-Commerce Template
+# Plantilla Serverless para E-Commerce
 
-A modern, fully-functional serverless e-commerce template built with **Vue 3**, **Netlify Functions**, **Neon PostgreSQL**, and **Stripe**.
+Una plantilla de tienda online completamente funcional construida con **Vue 3**, **Netlify Functions**, **Neon PostgreSQL** y **Stripe**.
 
-## 🚀 Features
+## Qué incluye
 
-- **Serverless Architecture**: No server management, scales automatically
-- **Complete Shopping Cart**: Add/remove items, variant support, localStorage persistence
-- **Optional Stripe Integration**: Secure checkout with Stripe (can be disabled)
-- **Optional Database**: Use Neon PostgreSQL or JSON file for products
-- **Product Variants**: Support for product options (colors, sizes, etc.)
-- **Stock Management**: Real-time stock tracking per product/variant
-- **Responsive Design**: Works on all devices
-- **SEO Optimized**: Meta tags, structured data, sitemap
-- **Modern Stack**: Vue 3, Vite, Pinia, Vue Router
-- **Type-Safe**: Clean code structure with composables and stores
+- **Arquitectura serverless**: Sin gestión de servidores, escala automáticamente
+- **Carrito de compras completo**: Añadir/eliminar productos, soporte para variantes, persistencia en localStorage
+- **Integración con Stripe (opcional)**: Checkout seguro con Stripe, se puede desactivar si no lo necesitas
+- **Base de datos opcional**: Usa Neon PostgreSQL o un archivo JSON para los productos
+- **Variantes de productos**: Soporte para opciones como colores, tallas, etc.
+- **Control de stock**: Seguimiento en tiempo real del stock por producto y variante
+- **Diseño responsive**: Funciona en cualquier dispositivo
+- **Optimizado para SEO**: Meta tags, datos estructurados y sitemap
+- **Stack moderno**: Vue 3, Vite, Pinia, Vue Router
+- **Código limpio**: Estructura clara con composables y stores
 
-## 📦 Tech Stack
+## Stack técnico
 
 ### Frontend
-- **Vue 3** - Progressive JavaScript framework
-- **Vite** - Next-generation frontend tooling
-- **Pinia** - State management
-- **Vue Router** - Official router for Vue
-- **SCSS** - CSS preprocessor
-- **@vueuse/head** - Document head manager
+- **Vue 3** - Framework JavaScript progresivo
+- **Vite** - Herramienta de desarrollo rápida
+- **Pinia** - Gestión de estado
+- **Vue Router** - Router oficial de Vue
+- **SCSS** - Preprocesador CSS
+- **@vueuse/head** - Gestión del head del documento
 
 ### Backend
-- **Netlify Functions** - Serverless functions
-- **Neon PostgreSQL** - Serverless Postgres database
-- **Stripe** - Payment processing
-- **@netlify/neon** - Neon database integration
+- **Netlify Functions** - Funciones serverless
+- **Neon PostgreSQL** - Base de datos Postgres serverless
+- **Stripe** - Procesamiento de pagos
+- **@netlify/neon** - Integración con Neon
 
-## 🏗️ Project Structure
+## Estructura del proyecto
 
 ```
 sls-template/
 ├── src/
-│   ├── components/       # Vue components
-│   ├── pages/           # Page components
-│   ├── composables/     # Reusable composition functions
-│   ├── stores/          # Pinia stores
-│   ├── utils/           # Helper functions
-│   ├── assets/styles/   # SCSS styles
-│   ├── App.vue          # Root component
-│   ├── main.js          # App entry point
-│   └── router.js        # Vue Router config
-├── netlify/functions/   # Serverless functions
-│   ├── getProducts.js       # Fetch products from DB
-│   ├── stripe_checkout.js   # Create Stripe checkout session
-│   ├── stripe_verify.js     # Verify payment status
-│   ├── stripe_webhook.js    # Handle Stripe events
-│   └── debugProducts.js     # Debug helper
-├── database/            # Database schema and samples
-│   ├── schema.sql           # PostgreSQL database structure
-│   ├── sample-products.sql  # Example products (SQL)
-│   └── sample-products.json # Example products (JSON)
-├── public/              # Static assets
-├── .env.example         # Environment variables template
-├── netlify.toml         # Netlify configuration
-├── package.json         # Dependencies
-└── vite.config.js       # Vite configuration
+│   ├── components/       # Componentes Vue
+│   ├── pages/           # Componentes de páginas
+│   ├── composables/     # Funciones de composición reutilizables
+│   ├── stores/          # Stores de Pinia
+│   ├── utils/           # Funciones auxiliares
+│   ├── assets/styles/   # Estilos SCSS
+│   ├── App.vue          # Componente raíz
+│   ├── main.js          # Punto de entrada de la app
+│   └── router.js        # Configuración de Vue Router
+├── netlify/functions/       # Funciones serverless
+│   ├── getProducts.js           # Obtiene productos de la BD
+│   ├── stripe_checkout.js       # Crea sesión de checkout de Stripe
+│   ├── stripe_verify.js         # Verifica estado del pago
+│   ├── stripe_webhook.js        # Maneja eventos de Stripe
+│   ├── debugProducts.js         # Helper de debug
+│   └── neon_database_setup.js   # Configuración inicial de la BD
+├── database/                # Schema y ejemplos de BD
+│   ├── schema.sql               # Estructura de la base de datos PostgreSQL
+│   ├── sample-products.sql      # Productos de ejemplo (SQL)
+│   └── sample-products.json     # Productos de ejemplo (JSON - 4 productos)
+├── public/                  # Assets estáticos
+│   └── sample-products.json     # Copia de productos de ejemplo
+├── .env.example             # Plantilla de variables de entorno
+├── netlify.toml             # Configuración de Netlify
+├── package.json             # Dependencias
+└── vite.config.js           # Configuración de Vite
 ```
 
-## 🎯 Quick Start
+## Inicio rápido
 
-### Prerequisites
+### Requisitos previos
 
-- Node.js 18+ and pnpm
-- Netlify account (optional, for deployment)
-- Neon database account (optional, can use JSON file)
-- Stripe account (optional, for payment processing)
+- Node.js 18+ y pnpm
+- Cuenta en Netlify (opcional, para despliegue)
+- Cuenta en Neon (opcional, puedes usar archivo JSON)
+- Cuenta en Stripe (opcional, para procesar pagos)
 
-### 1. Clone and Install
+### 1. Clonar e instalar
 
 ```bash
-# Clone the repository
-git clone <your-repo-url>
+# Clona el repositorio
+git clone <tu-repo-url>
 cd sls-template
 
-# Install dependencies
+# Instala las dependencias
 pnpm install
 ```
 
-### 2. Set Up Environment Variables
+### 2. Configurar variables de entorno
 
 ```bash
 cp .env.example .env
 ```
 
-Edit `.env` with your credentials:
+Edita `.env` con tus credenciales:
 
 ```env
-# Neon Database URL
+# URL de la base de datos Neon
 DATABASE_URL=postgresql://user:password@ep-xxxxx.region.aws.neon.tech/neondb?sslmode=require
 
-# Stripe Keys
+# Keys de Stripe
 VITE_STRIPE_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxxxxxxxxxx
 STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxxxxxxx
 STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxxxxxxxx
 
-# App URL
+# URL de la app
 VITE_APP_URL=http://localhost:8888
 ```
 
-### 3. Set Up Database (Optional)
+### 3. Configurar base de datos (opcional)
 
-**Option A: Use JSON File (No Database Required)**
+**Opción A: Usar archivo JSON (sin base de datos)**
 
-The template includes `database/sample-products.json` with 4 sample products. To use JSON instead of a database:
+La plantilla incluye `database/sample-products.json` con 4 productos de ejemplo. Para usar JSON en lugar de base de datos:
 
-1. Modify `netlify/functions/getProducts.js` to read from the JSON file
-2. Update product images in `/public/images/`
-3. Edit `sample-products.json` with your products
+1. Modifica `netlify/functions/getProducts.js` para leer del archivo JSON
+2. Actualiza las imágenes de productos en `/public/images/`
+3. Edita `sample-products.json` con tus productos
 
-**Option B: Use Neon PostgreSQL**
+**Opción B: Usar Neon PostgreSQL**
 
-Create your database on [Neon](https://console.neon.tech/) and run the schema:
+Crea tu base de datos en [Neon](https://console.neon.tech/) y ejecuta el schema:
 
 ```bash
-# Connect to your Neon database and run:
+# Conéctate a tu base de datos Neon y ejecuta:
 psql $DATABASE_URL -f database/schema.sql
 psql $DATABASE_URL -f database/sample-products.sql
 ```
 
-> **Note**: The JSON file structure matches the Neon database schema for easy migration.
+> **Nota**: La estructura del archivo JSON coincide con el schema de Neon para facilitar la migración.
 
-### 4. Run Development Server
+### 4. Ejecutar servidor de desarrollo
 
 ```bash
-# Start Netlify Dev (includes serverless functions)
+# Inicia Netlify Dev (incluye funciones serverless)
 pnpm run dev:nl
 
-# Or just Vite (frontend only)
+# O solo Vite (solo frontend)
 pnpm run dev
 ```
 
-Visit `http://localhost:8888`
+Visita `http://localhost:8888`
 
-## 📊 Database Schema
+## Schema de la base de datos
 
-The template includes a complete e-commerce database schema:
+La plantilla incluye un schema completo de base de datos para e-commerce:
 
-- **products** - Product catalog with variants support
-- **customers** - Customer information
-- **orders** - Order records
-- **order_items** - Individual items in orders
-- **addresses** - Shipping/billing addresses
-- **stripe_events** - Webhook event log
+- **products** - Catálogo de productos con soporte para variantes
+- **customers** - Información de clientes
+- **orders** - Registros de pedidos
+- **order_items** - Items individuales de cada pedido
+- **addresses** - Direcciones de envío y facturación
+- **stripe_events** - Log de eventos del webhook
 
-### Product Structure
+### Estructura de productos
 
-Products support complex configurations:
+Los productos soportan configuraciones complejas:
 
 ```json
 {
@@ -173,6 +175,7 @@ Products support complex configurations:
         "id": "red",
         "name": "Red",
         "stock": 10,
+        "inStock": true,
         "selected": {"color": "red"}
       }
     ]
@@ -180,75 +183,75 @@ Products support complex configurations:
 }
 ```
 
-## 🔐 Stripe Integration (Optional)
+## Integración con Stripe (opcional)
 
-Stripe integration is **optional**. The template works without it for showcasing products.
+La integración con Stripe es **opcional**. La plantilla funciona sin ella para mostrar productos.
 
-### Setup
+### Configuración
 
-1. Create account at [stripe.com](https://stripe.com)
-2. Get API keys from Dashboard → Developers → API keys
-3. Add keys to `.env` file
-4. Set up webhook endpoint: `https://your-site.netlify.app/.netlify/functions/stripe_webhook`
-5. Listen for events: `checkout.session.completed`, `payment_intent.succeeded`
+1. Crea una cuenta en [stripe.com](https://stripe.com)
+2. Obtén las API keys desde Dashboard → Developers → API keys
+3. Añade las keys al archivo `.env`
+4. Configura el webhook endpoint: `https://tu-sitio.netlify.app/.netlify/functions/stripe_webhook`
+5. Escucha estos eventos: `checkout.session.completed`, `payment_intent.succeeded`
 
-### Testing
+### Pruebas
 
-Use Stripe test cards:
-- Success: `4242 4242 4242 4242`
-- Decline: `4000 0000 0000 0002`
+Usa las tarjetas de test de Stripe:
+- Éxito: `4242 4242 4242 4242`
+- Rechazo: `4000 0000 0000 0002`
 
-### Without Stripe
+### Sin Stripe
 
-If you don't configure Stripe:
-- Products and cart will work normally
-- Checkout button will show a configuration message
-- You can still use the template as a product catalog
+Si no configuras Stripe:
+- Los productos y el carrito funcionan normalmente
+- El botón de checkout mostrará un mensaje de configuración
+- Puedes usar la plantilla como catálogo de productos
 
-## 🚢 Deployment
+## Despliegue
 
-### Deploy to Netlify
+### Desplegar en Netlify
 
-1. Push code to GitHub
-2. Import project in Netlify
-3. Add environment variables in Netlify UI
-4. Deploy!
+1. Sube el código a GitHub
+2. Importa el proyecto en Netlify
+3. Añade las variables de entorno en la UI de Netlify
+4. Despliega
 
 ```bash
-# Or use Netlify CLI
+# O usa Netlify CLI
 netlify init
 netlify env:import .env
 netlify deploy --prod
 ```
 
-### Post-Deployment
+### Post-despliegue
 
-1. Update `VITE_APP_URL` in Netlify environment variables
-2. Configure Stripe webhook URL
-3. Test checkout flow
+1. Actualiza `VITE_APP_URL` en las variables de entorno de Netlify
+2. Configura la URL del webhook de Stripe
+3. Prueba el flujo de checkout
 
-## 🎨 Customization
+## Personalización
 
-### Branding
+### Marca
 
-1. Update `index.html` title
-2. Replace logo in `public/logo/`
-3. Modify colors in `src/assets/styles/_colors.scss`
-4. Customize `About_pag.vue` and `SFAQ_pag.vue`
+1. Actualiza el título en `index.html`
+2. Reemplaza el logo en `public/logo/`
+3. Modifica los colores en `src/assets/styles/_colors.scss`
+4. Personaliza `About_pag.vue` y `FAQ_pag.vue`
 
-### Products
+### Productos
 
-**Using JSON File:**
-- Edit `database/sample-products.json`
-- Update product details, images, and pricing
-- Add your product images to `/public/images/`
+**Usando archivo JSON:**
+- Edita `database/sample-products.json`
+- Actualiza los detalles, imágenes y precios de los productos
+- Añade tus imágenes de productos en `/public/images/`
 
-**Using Database:**
-- Add products via SQL inserts or create an admin panel
-- Update `sample-products.sql` with your inventory
-- Modify product schema if needed
+**Usando base de datos:**
+- Añade productos mediante inserts SQL o crea un panel de administración
+- Actualiza `sample-products.sql` con tu inventario
+- Modifica el schema de productos si lo necesitas
 
-**Product JSON Structure:**
+**Estructura JSON de productos:**
 ```json
 {
   "sku": "PROD-001",
@@ -267,93 +270,90 @@ netlify deploy --prod
 }
 ```
 
-### Styles
+### Estilos
 
-All styles are in `src/assets/styles/`:
-- `_colors.scss` - Color variables
-- `_typography.scss` - Fonts and text styles
-- Component-specific SCSS files
+Todos los estilos están en `src/assets/styles/`:
+- `_colors.scss` - Variables de colores
+- `_typography.scss` - Fuentes y estilos de texto
+- Archivos SCSS específicos de cada componente
 
-## 📚 Key Components
+## Componentes clave
 
 ### Stores (Pinia)
 
-- **cartStore** - Shopping cart logic, localStorage persistence
-- **productModalStore** - Product detail modal state
-- **productVariantsStore** - Variant selection logic
+- **cartStore** - Lógica del carrito, persistencia en localStorage
+- **productModalStore** - Estado del modal de detalle de producto
+- **productVariantsStore** - Lógica de selección de variantes
 
 ### Composables
 
-- **useProducts** - Fetch products from API
-- **useStripe** - Stripe checkout integration
-- **usePageMeta** - SEO meta tags
-- **useSchema** - Structured data
+- **useProducts** - Obtiene productos de la API
+- **useStripe** - Integración con checkout de Stripe
+- **usePageMeta** - Meta tags para SEO
+- **useSchema** - Datos estructurados
 
-### Netlify Functions
+### Funciones de Netlify
 
-All functions are in `netlify/functions/`:
+Todas las funciones están en `netlify/functions/`:
 
-- **getProducts** - Returns active products from database
-- **stripe_checkout** - Creates Stripe checkout session
-- **stripe_verify** - Verifies payment completion
-- **stripe_webhook** - Processes Stripe webhooks (updates stock)
+- **getProducts** - Devuelve productos activos de la base de datos
+- **stripe_checkout** - Crea sesión de checkout de Stripe
+- **stripe_verify** - Verifica la finalización del pago
+- **stripe_webhook** - Procesa webhooks de Stripe (actualiza stock)
 
-## 🧪 Development
+## Desarrollo
 
 ```bash
-# Install dependencies
+# Instalar dependencias
 pnpm install
 
-# Run dev server with functions
+# Ejecutar servidor de desarrollo con funciones
 pnpm run dev:nl
 
-# Build for production
+# Build para producción
 pnpm run build
 
-# Preview production build
+# Vista previa del build de producción
 pnpm run preview
 
-# Lint code
+# Lint del código
 pnpm run lint
 
-# Format code
+# Formatear código
 pnpm run format
 ```
 
-## 🐛 Troubleshooting
+## Solución de problemas
 
-### Database Connection Issues
-- Verify `DATABASE_URL` format
-- Check Neon dashboard for database status
-- Ensure database accepts connections
+### Problemas de conexión con la base de datos
+- Verifica el formato de `DATABASE_URL`
+- Revisa el dashboard de Neon para ver el estado de la base de datos
+- Asegúrate de que la base de datos acepta conexiones
 
-### Stripe Checkout Not Working
-- Verify publishable key starts with `pk_test_` or `pk_live_`
-- Check Netlify function logs
-- Test with Stripe test cards
+### El checkout de Stripe no funciona
+- Verifica que la publishable key empiece con `pk_test_` o `pk_live_`
+- Revisa los logs de las funciones de Netlify
+- Prueba con las tarjetas de test de Stripe
 
-### Functions Not Working Locally
-- Use `pnpm run dev:nl` instead of `pnpm run dev`
-- Check Netlify CLI is installed
-- Verify `.env` file exists
+### Las funciones no funcionan en local
+- Usa `pnpm run dev:nl` en lugar de `pnpm run dev`
+- Verifica que Netlify CLI esté instalado
+- Asegúrate de que el archivo `.env` existe
 
-## 📝 License
+## Licencia
 
-MIT License - feel free to use for personal or commercial projects.
+Licencia MIT - puedes usarla libremente para proyectos personales o comerciales.
 
-## 🤝 Contributing
+## Contribuciones
 
-Contributions welcome! Feel free to:
-- Report bugs
-- Suggest features
-- Submit pull requests
+Las contribuciones son bienvenidas. Puedes:
+- Reportar bugs
+- Sugerir funcionalidades
+- Enviar pull requests
 
-## 🙏 Credits
+## Créditos
 
-This template was created as a simplified, open-source foundation for building serverless e-commerce applications.
+Esta plantilla se creó como base open-source simplificada para construir aplicaciones e-commerce serverless.
 
-Built with ❤️ using Vue, Netlify, Neon, and Stripe.
+Construida con Vue, Netlify, Neon y Stripe.
 
----
-
-**Need help?** Check the [SETUP.md](./SETUP.md) for detailed setup instructions.
