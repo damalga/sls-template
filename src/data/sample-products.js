@@ -96,7 +96,7 @@ export const sampleProducts = [
         {
           id: "black",
           name: "Black",
-          price: 3500,
+          price_cents: 3500,
           stock: 5,
           inStock: true,
           selected: {
@@ -106,7 +106,7 @@ export const sampleProducts = [
         {
           id: "white",
           name: "White",
-          price: 4000,
+          price_cents: 4000,
           stock: 3,
           inStock: true,
           selected: {
@@ -116,7 +116,7 @@ export const sampleProducts = [
         {
           id: "red",
           name: "Red",
-          price: 4900,
+          price_cents: 4900,
           stock: 0,
           inStock: false,
           selected: {
@@ -183,7 +183,7 @@ export const sampleProducts = [
         {
           id: "small",
           name: "Small",
-          price: 3400,
+          price_cents: 3400,
           stock: 0,
           inStock: false,
           selected: {
@@ -193,7 +193,7 @@ export const sampleProducts = [
         {
           id: "medium",
           name: "Medium",
-          price: 3200,
+          price_cents: 3200,
           stock: 0,
           inStock: false,
           selected: {
@@ -203,7 +203,7 @@ export const sampleProducts = [
         {
           id: "large",
           name: "Large",
-          price: 3000,
+          price_cents: 3000,
           stock: 0,
           inStock: false,
           selected: {
@@ -213,7 +213,7 @@ export const sampleProducts = [
         {
           id: "xlarge",
           name: "X-Large",
-          price: 2800,
+          price_cents: 2800,
           stock: 0,
           inStock: false,
           selected: {

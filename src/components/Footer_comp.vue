@@ -8,7 +8,7 @@
       </div>
       <div class="footer-claim">
         <span>
-          &copy; {{ new Date().getFullYear() }} SLS Shop — All rights reserved.
+          &copy; {{ new Date().getFullYear() }} SLS Shop - All rights reserved.
         </span>
       </div>
     </div>

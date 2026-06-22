@@ -86,7 +86,7 @@
           </div>
 
           <div class="product-price">
-            <span class="price">€{{ variantsStore.getProductPrice(product) }}</span>
+            <span class="price">{{ formatPrice(variantsStore.getProductPrice(product)) }}</span>
             <span v-if="variantsStore.hasAnyVariantInStock(product)" class="stock in-stock"
               >In stock</span
             >
@@ -174,7 +174,7 @@ import { useProductVariantsStore } from '@/stores/productVariantsStore'
 import Header from '../components/Header_comp.vue'
 import Footer from '../components/Footer_comp.vue'
 import ProductVariants from '../components/ProductVariants_comp.vue'
-import { QUANTITY_LIMITS, getProductIdFromSlug, getProductUrl } from '@/utils/helpers'
+import { QUANTITY_LIMITS, getProductIdFromSlug, getProductUrl, formatPrice } from '@/utils/helpers'
 
 const route = useRoute()
 const router = useRouter()

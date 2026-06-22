@@ -24,11 +24,11 @@
           <div class="variant-info">
             <span class="variant-name">{{ option.name }}</span>
             <span class="variant-price">
-              <span v-if="option.priceDiff > 0" class="price-diff">+€{{ option.priceDiff }}</span>
+              <span v-if="option.priceDiff > 0" class="price-diff">+{{ formatPrice(option.priceDiff) }}</span>
               <span v-else-if="option.priceDiff < 0" class="price-diff discount"
-                >-€{{ Math.abs(option.priceDiff) }}</span
+                >-{{ formatPrice(Math.abs(option.priceDiff)) }}</span
               >
-              <span class="final-price">€{{ option.price }}</span>
+              <span class="final-price">{{ formatPrice(option.price) }}</span>
             </span>
           </div>
           <!-- Stock info -->
@@ -54,6 +54,7 @@
 <script setup>
 import { computed, onMounted } from 'vue'
 import { useProductVariantsStore } from '@/stores/productVariantsStore'
+import { formatPrice } from '@/utils/helpers'
 
 const props = defineProps({
   product: {

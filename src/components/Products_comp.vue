@@ -12,7 +12,7 @@
             <h4 class="product-name" @click="openProductModal(product)">{{ product.name }}</h4>
             <p class="product-desc">{{ product.desc }}</p>
             <div class="product-values">
-              <div class="product-price">€{{ product.price }}</div>
+              <div class="product-price">{{ formatPrice(variantsStore.getProductPrice(product)) }}</div>
 
               <!-- Stock badge (solo en shop) -->
               <div v-if="showStock" class="product-stock">
@@ -66,6 +66,7 @@ import { computed, onMounted } from 'vue'
 import { useProductModalStore } from '@/stores/productModalStore'
 import { useCartStore } from '@/stores/cartStore'
 import { useProductVariantsStore } from '@/stores/productVariantsStore'
+import { formatPrice } from '@/utils/helpers'
 
 // Props configurables
 const props = defineProps({

@@ -40,7 +40,15 @@ export function useProducts() {
             ? product.variants.options?.some(opt => opt.stock > 0 || opt.inStock)
             : product.stock > 0,
           features: product.features || [],
-          variants: product.variants,
+          variants: product.variants
+            ? {
+                ...product.variants,
+                options: product.variants.options?.map(opt => ({
+                  ...opt,
+                  price: opt.price_cents ? opt.price_cents / 100 : 0
+                }))
+              }
+            : null,
           createdAt: product.created_at || new Date().toISOString()
         }))
       }

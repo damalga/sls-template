@@ -11,7 +11,7 @@
         <router-link to="/cart" class="header-cart">
             Cart
           <span v-if="cartStore.totalItems > 0" class="cart-info">
-            ({{ cartStore.totalItems }}) [{{ cartStore.totalPrice }}€]
+            ({{ cartStore.totalItems }}) [{{ formatPrice(cartStore.totalPrice) }}]
           </span>
         </router-link>
       </div>
@@ -21,6 +21,7 @@
 
 <script setup>
 import { useCartStore } from '@/stores/cartStore'
+import { formatPrice } from '@/utils/helpers'
 
 const cartStore = useCartStore()
 </script>

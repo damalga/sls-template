@@ -5,22 +5,58 @@
       <section class="contact-section">
         <h3>Get in Touch</h3>
         <p>
-          Have questions? We'd love to hear from you. Send us a message and
-          we'll respond as soon as possible.
+          This is where your store's contact channel goes. Replace it with your
+          actual contact email, a custom form, or an integrated service like
+          <a
+            href="https://docs.netlify.com/forms/setup/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Netlify Forms</a
+          >,
+          <a
+            href="https://formspree.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Formspree</a
+          >
+          or
+          <a
+            href="https://sendgrid.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >SendGrid</a
+          >.
         </p>
-        <div class="contact-info">
-          <p>
-            <strong>Email: </strong>
-            <a href="mailto:damalga@protonmail.com">damalga@protonmail.com</a>
-          </p>
-          <p class="contact-note">
-            <em
-              >Note: Replace with your actual contact email or integrate a
-              contact form service like Formspree, Netlify Forms, or
-              SendGrid.</em
-            >
-          </p>
-        </div>
+      </section>
+
+      <section class="contact-section">
+        <h3>Want to talk to me?</h3>
+        <p>
+          I'm
+          <a
+            href="https://damalga.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >this human</a
+          >. You can reach me at
+          <a href="mailto:damalga@protonmail.com">damalga@protonmail.com</a>.
+          <br />
+          <br />
+          You can also hire my services through
+          <a
+            href="https://www.upwork.com/freelancers/~018e40e37800686d3f"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Upwork</a
+          >, including professionally setting up a store like this one with your
+          own visual identity:
+          <a
+            href="https://www.upwork.com/services/product/development-it-serverless-e-commerce-based-on-vue-2059618322864258332?ref=fl_profile"
+            target="_blank"
+            rel="noopener noreferrer"
+            >see the e-commerce project here</a
+          >.
+        </p>
       </section>
     </div>
   </main>

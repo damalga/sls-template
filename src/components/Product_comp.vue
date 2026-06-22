@@ -1,7 +1,15 @@
 <template>
-  <div v-if="productModalStore.isModalOpen" class="modal-overlay" @click="closeModal">
+  <div
+    v-if="productModalStore.isModalOpen"
+    class="modal-overlay"
+    @click="closeModal"
+  >
     <div class="modal-content" @click.stop>
-      <button class="modal-close" @click="closeModal" aria-label="Cerrar modal de producto">
+      <button
+        class="modal-close"
+        @click="closeModal"
+        aria-label="Cerrar modal de producto"
+      >
         <svg
           width="24"
           height="24"
@@ -54,7 +62,10 @@
               {{ currentImageIndex + 1 }} / {{ totalImages }}
             </div>
           </div>
-          <div v-if="product.images && product.images.length > 1" class="image-thumbnails">
+          <div
+            v-if="product.images && product.images.length > 1"
+            class="image-thumbnails"
+          >
             <button
               v-for="(image, index) in product.images"
               :key="index"
@@ -64,7 +75,10 @@
               :aria-label="`Ver imagen ${index + 1} de ${totalImages}`"
               :aria-current="selectedImage === image ? 'true' : 'false'"
             >
-              <img :src="image" :alt="`${product.name} - miniatura ${index + 1}`" />
+              <img
+                :src="image"
+                :alt="`${product.name} - miniatura ${index + 1}`"
+              />
             </button>
           </div>
         </div>
@@ -83,15 +97,19 @@
                 class="product-category"
                 >{{ cat }}</span
               >
-              <span v-else-if="product.category" class="product-category">{{
-                product.category
-              }}</span>
+              <span v-else-if="product.category" class="product-category"
+                >{{ product.category }}
+              </span>
             </div>
           </div>
 
           <div class="product-price">
-            <span class="price">€{{ variantsStore.getProductPrice(product) }}</span>
-            <span v-if="variantsStore.hasAnyVariantInStock(product)" class="stock in-stock"
+            <span class="price">{{
+              formatPrice(variantsStore.getProductPrice(product))
+            }}</span>
+            <span
+              v-if="variantsStore.hasAnyVariantInStock(product)"
+              class="stock in-stock"
               >In stock</span
             >
             <span v-else class="stock out-of-stock">Out of stock</span>
@@ -109,7 +127,10 @@
           />
 
           <!-- Características -->
-          <div v-if="currentFeatures && currentFeatures.length" class="product-features">
+          <div
+            v-if="currentFeatures && currentFeatures.length"
+            class="product-features"
+          >
             <h6>Características principales:</h6>
             <ul>
               <li v-for="feature in currentFeatures" :key="feature">
@@ -136,7 +157,12 @@
           >
             -
           </button>
-          <span class="quantity" :id="`quantity-${product.id}`" role="status" aria-live="polite">
+          <span
+            class="quantity"
+            :id="`quantity-${product.id}`"
+            role="status"
+            aria-live="polite"
+          >
             {{ cartStore.getItemQuantity(product) }}
           </span>
           <button
@@ -145,11 +171,17 @@
             aria-label="Increase quantity"
             :aria-describedby="`quantity-${product.id}`"
             :disabled="isMaxQuantityReached"
-            :title="isMaxQuantityReached ? `Maximum ${QUANTITY_LIMITS.MAX} units` : ''"
+            :title="
+              isMaxQuantityReached ? `Maximum ${QUANTITY_LIMITS.MAX} units` : ''
+            "
           >
             +
           </button>
-          <button class="remove-btn" @click="removeFromCart" aria-label="Remove from cart">
+          <button
+            class="remove-btn"
+            @click="removeFromCart"
+            aria-label="Remove from cart"
+          >
             Remove from cart
           </button>
         </div>
@@ -160,10 +192,16 @@
           @click="addToCart"
           :disabled="!variantsStore.isProductAvailable(product)"
           :aria-label="
-            variantsStore.isProductAvailable(product) ? 'Add to cart' : 'Producto out of stock'
+            variantsStore.isProductAvailable(product)
+              ? 'Add to cart'
+              : 'Producto out of stock'
           "
         >
-          {{ variantsStore.isProductAvailable(product) ? 'Add to cart' : 'Out of stock' }}
+          {{
+            variantsStore.isProductAvailable(product)
+              ? 'Add to cart'
+              : 'Out of stock'
+          }}
         </button>
       </div>
     </div>
@@ -177,7 +215,7 @@ import { useProductModalStore } from '@/stores/productModalStore'
 import { useCartStore } from '@/stores/cartStore'
 import { useProductVariantsStore } from '@/stores/productVariantsStore'
 import ProductVariants from './ProductVariants_comp.vue'
-import { QUANTITY_LIMITS, getProductSlug } from '@/utils/helpers'
+import { QUANTITY_LIMITS, getProductSlug, formatPrice } from '@/utils/helpers'
 
 const router = useRouter()
 const productModalStore = useProductModalStore()
@@ -191,7 +229,11 @@ const product = computed(() => productModalStore.selectedProduct)
 
 // Computada para obtener el total de imágenes
 const totalImages = computed(() => {
-  if (product.value && product.value.images && product.value.images.length > 0) {
+  if (
+    product.value &&
+    product.value.images &&
+    product.value.images.length > 0
+  ) {
     return product.value.images.length
   }
   return 1
@@ -230,16 +272,26 @@ const selectImage = (index) => {
 }
 
 const nextImage = () => {
-  if (product.value && product.value.images && product.value.images.length > 0) {
-    const nextIndex = (currentImageIndex.value + 1) % product.value.images.length
+  if (
+    product.value &&
+    product.value.images &&
+    product.value.images.length > 0
+  ) {
+    const nextIndex =
+      (currentImageIndex.value + 1) % product.value.images.length
     selectImage(nextIndex)
   }
 }
 
 const previousImage = () => {
-  if (product.value && product.value.images && product.value.images.length > 0) {
+  if (
+    product.value &&
+    product.value.images &&
+    product.value.images.length > 0
+  ) {
     const prevIndex =
-      (currentImageIndex.value - 1 + product.value.images.length) % product.value.images.length
+      (currentImageIndex.value - 1 + product.value.images.length) %
+      product.value.images.length
     selectImage(prevIndex)
   }
 }

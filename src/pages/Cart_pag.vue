@@ -25,7 +25,7 @@
               <div class="item-info">
                 <h3 class="item-name">{{ item.name }}</h3>
                 <p class="item-desc">{{ item.desc }}</p>
-                <div class="item-price">€{{ item.price }}</div>
+                <div class="item-price">{{ formatPrice(item.price) }}</div>
               </div>
 
               <div class="item-controls">
@@ -58,7 +58,7 @@
                   </button>
                 </div>
                 <div class="item-total" aria-label="Product subtotal">
-                  €{{ (item.price * item.quantity).toFixed(2) }}
+                  {{ formatPrice(item.price * item.quantity) }}
                 </div>
                 <button
                   class="remove-item"
@@ -83,7 +83,7 @@
 
               <div class="summary-row">
                 <span>Products ({{ cartStore.totalItems }})</span>
-                <span>€{{ cartStore.totalPrice.toFixed(2) }}</span>
+                <span>{{ formatPrice(cartStore.totalPrice) }}</span>
               </div>
 
               <div class="summary-row">
@@ -95,7 +95,7 @@
 
               <div class="summary-row total">
                 <span>Total</span>
-                <span>€{{ cartStore.totalPrice.toFixed(2) }}</span>
+                <span>{{ formatPrice(cartStore.totalPrice) }}</span>
               </div>
 
               <button
@@ -149,7 +149,7 @@ import Header from '../components/Header_comp.vue'
 import Footer from '../components/Footer_comp.vue'
 import ConfirmModal from '../components/ConfirmModal_comp.vue'
 import { useCartStore } from '../stores/cartStore'
-import { QUANTITY_LIMITS } from '@/utils/helpers'
+import { QUANTITY_LIMITS, formatPrice } from '@/utils/helpers'
 import { ref, computed } from 'vue'
 
 // SEO Meta Tags - Do not index cart

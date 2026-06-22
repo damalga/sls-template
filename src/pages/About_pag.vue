@@ -4,14 +4,14 @@
     <main class="about-main">
       <div class="about-container">
         <section class="about-section">
-          <h2>About this template</h2>
+          <h2>Cut hosting friction and launch your e-commerce</h2>
           <p>
-            I've always wanted to have an online store... I thought about
-            selling vinyl records, but I can't deal with the idea of having to
-            input titles, covers, track names, durations, credits, etc... it's
-            beyond me, as much or more than having to hire hosting for the
-            website. I see it like paying rent for a commercial space that you
-            only open on weekends.
+            <strong>Don't pay for a hosting you don't use.</strong>
+            <br />
+            <br />
+            Setting up an online store shouldn't start with hiring a server that
+            sits there 24/7 charging you, whether the store is open or not. It's
+            like paying rent for a commercial space you only open on weekends.
             <br />
             <br />
             <strong>Serverless</strong> means not needing a server, that is,
@@ -75,12 +75,11 @@
             for payments
             <br />
             <br />
-            But build it with whatever the fuck you want. If you're technically
-            inclined, I encourage you to question every part, rip out what you
-            don't like, and build based on your preferences. The idea isn't for
-            you to copy this line by line unless you want to... The idea is for
-            you to understand the concept and adapt it to your philosophy or way
-            of working.
+            But build it with whatever you want. If you're technically inclined,
+            I encourage you to question every part, rip out what you don't like,
+            and build based on your preferences. The idea isn't to copy this
+            line by line, but to understand the concept and adapt it to your
+            philosophy or way of working.
             <br />
             <br />
             <strong>Why does this exist?</strong> Because traditional e-commerce
@@ -101,14 +100,14 @@
               ><strong>PrestaShop</strong></a
             >
             work like a charm. If you have budget and want to start selling
-            tomorrow, don't overthink it... But if what you want is to
-            understand how your own store works, have total access to your data,
-            not pay commissions per sale, and build on something that's yours...
-            you need something else.
+            tomorrow, don't overthink it… But if what you want is to understand
+            how your own store works, have total access to your data, pay less
+            commissions per sale, and build on something that's yours… you need
+            something else.
             <br />
             <br />
-            This template is that something else. It's not perfect. I'm still
-            using third-party infrastructure. I'm not going to sell you absolute
+            This template is that something else. It's not perfect. It still
+            uses third-party infrastructure. I'm not selling you absolute
             digital sovereignty. But I am bringing you fewer dependencies, lower
             fixed costs, and more control.
             <br />
@@ -125,11 +124,14 @@
             >. Clone it, break it, improve it. Do whatever you want with it.
             <br />
             <br />
-            I'm not here to revolutionize anything. I'm here to tell you there's
-            another way to build e-commerce. Lighter, cheaper, and more yours.
+            This isn't about revolutionizing anything. It's about showing
+            there's another way to build e-commerce: lighter, cheaper, and more
+            yours.
             <br />
             <br />
-            Questions? <router-link to="/contact">Contact us</router-link>.
+            If you have any questions, I'd be happy for you to
+            <router-link to="/contact">contact me</router-link> and try to solve
+            any problem that comes up.
           </p>
         </section>
       </div>
